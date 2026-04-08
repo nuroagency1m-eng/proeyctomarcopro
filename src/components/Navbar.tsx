@@ -16,6 +16,7 @@ const navItems = [
   { href: '/dashboard/services/clipping', iconClass: 'fa-solid fa-newspaper', label: 'Clipping' },
   { href: '/dashboard/courses', iconClass: 'fa-solid fa-book-open', label: 'Academy' },
   { href: '/dashboard/wallet', iconClass: 'fa-solid fa-wallet', label: 'Wallet' },
+  { href: '/dashboard/store', iconClass: 'fa-solid fa-bag-shopping', label: 'Shop' },
 ]
 
 const mobileNavItems = [

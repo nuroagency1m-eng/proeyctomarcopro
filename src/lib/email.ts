@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://jd-internacional-1.onrender.com'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://mydiamond.com'
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -72,7 +72,7 @@ function emailWrapper(content: string, accentColor = '#D203DD'): string {
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="padding:14px 32px;">
-                  <p style="color:rgba(255,255,255,0.18);font-size:11px;margin:0;letter-spacing:0.5px;">jdinternacional.com &nbsp;·&nbsp; soporte@jdinternacional.com</p>
+                  <p style="color:rgba(255,255,255,0.18);font-size:11px;margin:0;letter-spacing:0.5px;">mydiamond.com &nbsp;·&nbsp; soporte@mydiamond.com</p>
                 </td>
               </tr>
             </table>
