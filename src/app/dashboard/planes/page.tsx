@@ -270,7 +270,7 @@ export default function PlanesPage() {
 
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-white/40 uppercase tracking-widest mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-purple-500/25 text-[10px] font-bold text-white/40 uppercase tracking-widest mb-4">
           <Layers size={10} />
           MY DIAMOND · Planes oficiales
         </div>
@@ -345,7 +345,7 @@ export default function PlanesPage() {
             >
               {pack.locked && (
                 <div className="absolute inset-0 rounded-3xl z-10 flex flex-col items-center justify-center gap-2 backdrop-blur-[1px]">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-purple-500/25 flex items-center justify-center">
                     <Lock size={20} className="text-white/25" />
                   </div>
                   <p className="text-[10px] font-black text-white/25 uppercase tracking-widest">Próximamente</p>
@@ -463,7 +463,7 @@ export default function PlanesPage() {
                   }
                   if (isLower) {
                     return (
-                      <button disabled className="w-full py-3 rounded-2xl text-sm font-black bg-white/3 text-white/20 border border-white/8">
+                      <button disabled className="w-full py-3 rounded-2xl text-sm font-black bg-white/3 text-white/20 border border-purple-500/20">
                         Plan inferior
                       </button>
                     )
@@ -523,8 +523,8 @@ export default function PlanesPage() {
       </div>
 
       {/* Bottom note */}
-      <div className="mt-6 p-4 bg-white/[0.02] border border-white/5 rounded-2xl flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-        <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center shrink-0">
+      <div className="mt-6 p-4 bg-white/[0.02] border border-purple-500/15 rounded-2xl flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+        <div className="w-8 h-8 rounded-xl bg-white/5 border border-purple-500/20 flex items-center justify-center shrink-0">
           <Layers size={14} className="text-white/30" />
         </div>
         <div>

@@ -85,7 +85,7 @@ export default function LandingPagesPage() {
                     </div>
                 ) : (
                     pages.map((page) => (
-                        <div key={page.id} className="bg-dark-900/50 border border-white/5 rounded-3xl p-6 hover:border-[#9B00FF]/30 transition-all group relative overflow-hidden">
+                        <div key={page.id} className="bg-dark-900/50 border border-purple-500/15 rounded-3xl p-6 hover:border-[#9B00FF]/30 transition-all group relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#9B00FF]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                             <div className="flex items-start justify-between mb-4">

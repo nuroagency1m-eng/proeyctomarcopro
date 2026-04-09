@@ -97,7 +97,7 @@ export default function PreviewPage() {
         <div className="px-4 md:px-6 pt-6 max-w-screen-xl mx-auto pb-24 text-white">
             {/* Header */}
             <div className="flex items-center gap-4 mb-6">
-                <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </Link>
                 <div className="flex-1 min-w-0">
@@ -172,7 +172,7 @@ export default function PreviewPage() {
                                 <button
                                     onClick={() => setActiveSlot(Math.max(0, activeSlot - 1))}
                                     disabled={activeSlot === 0}
-                                    className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center disabled:opacity-30 hover:bg-white/10"
+                                    className="w-7 h-7 rounded-lg bg-white/5 border border-purple-500/25 flex items-center justify-center disabled:opacity-30 hover:bg-white/10"
                                 >
                                     <ChevronLeft size={14} />
                                 </button>
@@ -180,7 +180,7 @@ export default function PreviewPage() {
                                 <button
                                     onClick={() => setActiveSlot(Math.min(creatives.length - 1, activeSlot + 1))}
                                     disabled={activeSlot === creatives.length - 1}
-                                    className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center disabled:opacity-30 hover:bg-white/10"
+                                    className="w-7 h-7 rounded-lg bg-white/5 border border-purple-500/25 flex items-center justify-center disabled:opacity-30 hover:bg-white/10"
                                 >
                                     <ChevronRight size={14} />
                                 </button>
@@ -188,7 +188,7 @@ export default function PreviewPage() {
                         </div>
 
                         {/* Instagram/Facebook feed mockup */}
-                        <div className="bg-[#18191a] rounded-2xl overflow-hidden border border-white/10">
+                        <div className="bg-[#0D1E79]/50 rounded-2xl overflow-hidden border border-purple-500/25">
                             {/* Post header */}
                             <div className="flex items-center gap-3 p-3 border-b border-white/5">
                                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-xs font-black">

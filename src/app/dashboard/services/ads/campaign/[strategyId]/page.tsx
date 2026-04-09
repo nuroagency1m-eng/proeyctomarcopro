@@ -600,7 +600,7 @@ function CampaignPageInner() {
             <div className="flex items-center gap-3 mb-6"
                 style={{ background: 'linear-gradient(135deg,rgba(139,92,246,0.1) 0%,rgba(59,130,246,0.05) 100%)', border: '1px solid rgba(139,92,246,0.18)', borderRadius: '1.5rem', padding: '1rem 1.25rem' }}>
                 <Link href="/dashboard/services/ads/strategies"
-                    className="w-9 h-9 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                    className="w-9 h-9 shrink-0 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={15} />
                 </Link>
                 <div className="flex-1 min-w-0">
@@ -614,7 +614,7 @@ function CampaignPageInner() {
                         { label: 'Creativos', done: creativesReady > 0, icon: ImageIcon },
                         { label: 'Textos', done: copiesGenerated, icon: FileText },
                     ].map((s, i) => (
-                        <span key={i} className={`flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${s.done ? 'bg-green-500/15 border-green-500/25 text-green-400' : 'bg-white/4 border-white/8 text-white/25'}`}>
+                        <span key={i} className={`flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${s.done ? 'bg-green-500/15 border-green-500/25 text-green-400' : 'bg-white/4 border-purple-500/20 text-white/25'}`}>
                             {s.done ? <CheckCircle2 size={9} /> : <s.icon size={9} />}{s.label}
                         </span>
                     ))}
@@ -622,7 +622,7 @@ function CampaignPageInner() {
             </div>
 
             {/* Platform badges */}
-            <div className="flex flex-wrap items-center gap-2 mb-5 px-3 py-2.5 bg-white/2 border border-white/5 border-l-2 border-l-blue-500/40 rounded-2xl">
+            <div className="flex flex-wrap items-center gap-2 mb-5 px-3 py-2.5 bg-white/2 border border-purple-500/15 border-l-2 border-l-blue-500/40 rounded-2xl">
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">{strategy.platform}</span>
                 <span className="text-[11px] text-white/30 flex items-center gap-1">
                     {strategy.mediaType === 'video' ? <Video size={10} /> : <ImageIcon size={10} />}
@@ -652,7 +652,7 @@ function CampaignPageInner() {
             {/* ══════════════════════════════════════════════
                 SECCIÓN 1 — CONFIGURACIÓN
             ══════════════════════════════════════════════ */}
-            <div className={`mb-4 rounded-3xl border transition-all overflow-hidden ${configSaved ? 'border-green-500/20' : 'border-white/8'}`}
+            <div className={`mb-4 rounded-3xl border transition-all overflow-hidden ${configSaved ? 'border-green-500/20' : 'border-purple-500/20'}`}
                 style={{ background: configSaved ? 'rgba(16,185,129,0.06)' : 'rgba(13,30,121,0.4)' }}>
 
                 {/* Section header */}
@@ -754,7 +754,7 @@ function CampaignPageInner() {
                                         if (nums.length > 0) return nums.map((n: any) => (
                                             <button key={n.id || n.displayPhone} type="button"
                                                 onClick={() => { setForm(f => ({ ...f, whatsappNumber: n.displayPhone })); if (form.pageId) saveWaPref(form.pageId, n.displayPhone) }}
-                                                className="w-full flex items-center justify-between px-3 py-2.5 bg-white/3 border border-white/8 hover:border-green-500/40 hover:bg-green-500/5 rounded-xl transition-all text-left">
+                                                className="w-full flex items-center justify-between px-3 py-2.5 bg-white/3 border border-purple-500/20 hover:border-green-500/40 hover:bg-green-500/5 rounded-xl transition-all text-left">
                                                 <div className="flex items-center gap-2">
                                                     <Phone size={12} className="text-green-400/60" />
                                                     <span className="text-sm font-mono text-white/90">{n.displayPhone}</span>
@@ -806,7 +806,7 @@ function CampaignPageInner() {
                                 <p className="text-[9px] text-white/15 mt-1">{20 - form.whatsappQuestion.length} caracteres restantes</p>
                             </div>
                             {(form.welcomeMessage || form.whatsappQuestion) && (
-                                <div className="rounded-xl bg-[#0b2010] border border-green-500/20 p-3 space-y-2">
+                                <div className="rounded-xl bg-green-900/20 border border-green-500/20 p-3 space-y-2">
                                     <p className="text-[9px] font-bold text-green-400/60 uppercase tracking-widest mb-1">Vista previa</p>
                                     {form.welcomeMessage && (
                                         <div className="inline-block bg-white/10 rounded-xl rounded-tl-sm px-3 py-2 max-w-[85%]">
@@ -904,7 +904,7 @@ function CampaignPageInner() {
                                             { key: 'carousel', label: 'Carrusel', desc: 'Todas las variaciones en un carrusel', icon: Layers },
                                         ] as const).map(opt => (
                                             <button key={opt.key} onClick={() => setAdFormat(opt.key)}
-                                                className={`flex flex-col items-start gap-1 p-3 rounded-xl border text-left transition-all ${adFormat === opt.key ? 'bg-purple-500/15 border-purple-500/40' : 'bg-white/3 border-white/8 hover:border-white/20'}`}>
+                                                className={`flex flex-col items-start gap-1 p-3 rounded-xl border text-left transition-all ${adFormat === opt.key ? 'bg-purple-500/15 border-purple-500/40' : 'bg-white/3 border-purple-500/20 hover:border-purple-500/40'}`}>
                                                 <opt.icon size={12} className={adFormat === opt.key ? 'text-purple-400' : 'text-white/30'} />
                                                 <span className={`text-[11px] font-bold ${adFormat === opt.key ? 'text-purple-300' : 'text-white/50'}`}>{opt.label}</span>
                                                 <span className="text-[9px] text-white/25 leading-tight">{opt.desc}</span>
@@ -952,7 +952,7 @@ function CampaignPageInner() {
                                         { key: 'min_roas', label: 'ROAS mín.', desc: 'Retorno garantizado', icon: TrendingUp },
                                     ] as const).map(opt => (
                                         <button key={opt.key} onClick={() => setBidStrategy(opt.key)}
-                                            className={`flex flex-col items-start gap-1 p-3 rounded-xl border text-left transition-all ${bidStrategy === opt.key ? 'bg-purple-500/15 border-purple-500/40' : 'bg-white/3 border-white/8 hover:border-white/20'}`}>
+                                            className={`flex flex-col items-start gap-1 p-3 rounded-xl border text-left transition-all ${bidStrategy === opt.key ? 'bg-purple-500/15 border-purple-500/40' : 'bg-white/3 border-purple-500/20 hover:border-purple-500/40'}`}>
                                             <opt.icon size={12} className={bidStrategy === opt.key ? 'text-purple-400' : 'text-white/30'} />
                                             <span className={`text-[11px] font-bold ${bidStrategy === opt.key ? 'text-purple-300' : 'text-white/50'}`}>{opt.label}</span>
                                             <span className="text-[9px] text-white/25 leading-tight">{opt.desc}</span>
@@ -1003,12 +1003,12 @@ function CampaignPageInner() {
             {/* ══════════════════════════════════════════════
                 SECCIÓN 2 — CREATIVOS & TEXTOS
             ══════════════════════════════════════════════ */}
-            <div ref={creativesRef} className={`mb-4 rounded-3xl border transition-all overflow-hidden relative ${!configSaved ? 'border-white/5' : 'border-white/8'}`}
+            <div ref={creativesRef} className={`mb-4 rounded-3xl border transition-all overflow-hidden relative ${!configSaved ? 'border-white/5' : 'border-purple-500/20'}`}
                 style={{ background: 'rgba(13,30,121,0.35)' }}>
 
                 {!configSaved && (
                     <div className="absolute inset-0 z-10 flex items-center justify-center rounded-3xl">
-                        <div className="px-4 py-2.5 rounded-xl bg-black/70 border border-white/10 backdrop-blur-sm flex items-center gap-2">
+                        <div className="px-4 py-2.5 rounded-xl bg-black/70 border border-purple-500/25 backdrop-blur-sm flex items-center gap-2">
                             <Settings2 size={12} className="text-white/40" />
                             <span className="text-xs text-white/50 font-bold">Guarda la configuración primero</span>
                         </div>
@@ -1062,7 +1062,7 @@ function CampaignPageInner() {
                                                 onChange={e => { if (e.target.files?.[0]) handleBulkRefImageUpload(e.target.files[0]); e.currentTarget.value = '' }} />
                                             {bulkRefImageUrl ? (
                                                 <div className="flex items-center gap-2 p-2 rounded-xl border border-green-500/25 bg-green-500/5">
-                                                    <img src={bulkRefImageUrl} alt="ref" className="w-10 h-10 rounded-lg object-cover shrink-0 border border-white/10" />
+                                                    <img src={bulkRefImageUrl} alt="ref" className="w-10 h-10 rounded-lg object-cover shrink-0 border border-purple-500/25" />
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-[10px] text-green-400 font-bold">✓ Foto cargada para todos los slots</p>
                                                         <p className="text-[9px] text-white/30">La IA usará esta imagen como referencia del producto</p>
@@ -1088,7 +1088,7 @@ function CampaignPageInner() {
                                                         { key: 'premium', label: 'Premium HD', icon: Trophy, color: 'text-yellow-400', border: 'border-yellow-500/30', bg: 'bg-yellow-500/10' },
                                                     ] as const).map(q => (
                                                         <button key={q.key} onClick={() => setBulkQuality(q.key)}
-                                                            className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl border text-[11px] font-bold transition-all ${bulkQuality === q.key ? `${q.bg} ${q.border} ${q.color}` : 'bg-white/3 border-white/8 text-white/30 hover:border-white/20'}`}>
+                                                            className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl border text-[11px] font-bold transition-all ${bulkQuality === q.key ? `${q.bg} ${q.border} ${q.color}` : 'bg-white/3 border-purple-500/20 text-white/30 hover:border-purple-500/40'}`}>
                                                             <q.icon size={11} />{q.label}
                                                         </button>
                                                     ))}
@@ -1103,7 +1103,7 @@ function CampaignPageInner() {
                                                         { key: 'horizontal', label: 'Banner 16:9', w: 'w-5', h: 'h-3' },
                                                     ] as const).map(f => (
                                                         <button key={f.key} onClick={() => setBulkFormat(f.key)}
-                                                            className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl border text-[11px] font-bold transition-all ${bulkFormat === f.key ? 'bg-purple-500/15 border-purple-500/40 text-purple-300' : 'bg-white/3 border-white/8 text-white/30 hover:border-white/20'}`}>
+                                                            className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl border text-[11px] font-bold transition-all ${bulkFormat === f.key ? 'bg-purple-500/15 border-purple-500/40 text-purple-300' : 'bg-white/3 border-purple-500/20 text-white/30 hover:border-purple-500/40'}`}>
                                                             <div className={`border-2 rounded-sm shrink-0 ${bulkFormat === f.key ? 'border-purple-400' : 'border-white/20'} ${f.w} ${f.h}`} />
                                                             {f.label}
                                                         </button>
@@ -1192,7 +1192,7 @@ function CampaignPageInner() {
                                                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
                                                         <div className="flex flex-col gap-1.5">
                                                             <button onClick={() => fileRefs.current[i]?.click()}
-                                                                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-[10px] font-bold text-white/40">
+                                                                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-purple-500/25 hover:bg-white/10 transition-all text-[10px] font-bold text-white/40">
                                                                 <Upload size={11} /> Subir
                                                             </button>
                                                             {strategy.mediaType !== 'video' && configSaved && (
@@ -1219,7 +1219,7 @@ function CampaignPageInner() {
                                             {creative.mediaUrl && !creative.uploading && configSaved && (
                                                 <div className="flex md:hidden gap-1.5 mt-2">
                                                     <button onClick={() => fileRefs.current[i]?.click()}
-                                                        className="flex-1 flex items-center justify-center gap-1 py-2 rounded-xl bg-white/5 border border-white/8 text-[10px] font-bold text-white/40">
+                                                        className="flex-1 flex items-center justify-center gap-1 py-2 rounded-xl bg-white/5 border border-purple-500/20 text-[10px] font-bold text-white/40">
                                                         <Upload size={10} /> Cambiar
                                                     </button>
                                                     {strategy.mediaType !== 'video' && (
@@ -1272,7 +1272,7 @@ function CampaignPageInner() {
                                                 />
                                                 {/* Suggestions dropdown */}
                                                 {activeSuggestionKey === `${i}-primaryText` && suggestions[`${i}-primaryText`] && (
-                                                    <div className="mt-1.5 rounded-xl border border-purple-500/20 bg-[#0d0818] overflow-hidden">
+                                                    <div className="mt-1.5 rounded-xl border border-purple-500/20 bg-[#0D1E79]/40 overflow-hidden">
                                                         <div className="flex items-center justify-between px-3 py-2 border-b border-white/5">
                                                             <p className="text-[9px] font-bold text-purple-400 uppercase">3 opciones — elige una</p>
                                                             <button onClick={() => setActiveSuggestionKey(null)} className="text-white/20 hover:text-white"><X size={10} /></button>
@@ -1304,7 +1304,7 @@ function CampaignPageInner() {
                                                         onChange={e => setCreatives(prev => prev.map((c, j) => j === i ? { ...c, headline: e.target.value } : c))}
                                                         className="w-full bg-[#1c1d2e] border border-white/20 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500/40" />
                                                     {activeSuggestionKey === `${i}-headline` && suggestions[`${i}-headline`] && (
-                                                        <div className="mt-1 rounded-xl border border-purple-500/20 bg-[#0d0818] overflow-hidden">
+                                                        <div className="mt-1 rounded-xl border border-purple-500/20 bg-[#0D1E79]/40 overflow-hidden">
                                                             <div className="flex items-center justify-between px-2.5 py-1.5 border-b border-white/5">
                                                                 <p className="text-[9px] font-bold text-purple-400 uppercase">Opciones</p>
                                                                 <button onClick={() => setActiveSuggestionKey(null)} className="text-white/20 hover:text-white"><X size={9} /></button>
@@ -1333,7 +1333,7 @@ function CampaignPageInner() {
                                                         onChange={e => setCreatives(prev => prev.map((c, j) => j === i ? { ...c, description: e.target.value } : c))}
                                                         className="w-full bg-[#1c1d2e] border border-white/20 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500/40" />
                                                     {activeSuggestionKey === `${i}-description` && suggestions[`${i}-description`] && (
-                                                        <div className="mt-1 rounded-xl border border-purple-500/20 bg-[#0d0818] overflow-hidden">
+                                                        <div className="mt-1 rounded-xl border border-purple-500/20 bg-[#0D1E79]/40 overflow-hidden">
                                                             <div className="flex items-center justify-between px-2.5 py-1.5 border-b border-white/5">
                                                                 <p className="text-[9px] font-bold text-purple-400 uppercase">Opciones</p>
                                                                 <button onClick={() => setActiveSuggestionKey(null)} className="text-white/20 hover:text-white"><X size={9} /></button>
@@ -1354,7 +1354,7 @@ function CampaignPageInner() {
 
                                     {/* Per-slot AI image panel */}
                                     {imageGenPanel === i && configSaved && strategy.mediaType !== 'video' && (
-                                        <div className="border-t border-white/5 bg-[#0a0818] p-4 space-y-3">
+                                        <div className="border-t border-white/5 bg-[#0D1E79]/40 p-4 space-y-3">
                                             <div className="flex items-center justify-between">
                                                 <p className="text-[10px] font-bold uppercase tracking-widest text-purple-400 flex items-center gap-1.5">
                                                     <Wand2 size={10} /> {creatives.find(c => c.slotIndex === i)?.mediaUrl ? 'Editar imagen con IA' : 'Generar imagen con IA'}
@@ -1409,7 +1409,7 @@ function CampaignPageInner() {
                                                             { key: 'premium', label: 'Premium', icon: Trophy },
                                                         ] as const).map(q => (
                                                             <button key={q.key} onClick={() => setImageQuality(q.key)}
-                                                                className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[10px] font-bold transition-all ${imageQuality === q.key ? 'bg-purple-500/15 border-purple-500/40 text-purple-300' : 'bg-white/3 border-white/8 text-white/30'}`}>
+                                                                className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[10px] font-bold transition-all ${imageQuality === q.key ? 'bg-purple-500/15 border-purple-500/40 text-purple-300' : 'bg-white/3 border-purple-500/20 text-white/30'}`}>
                                                                 <q.icon size={10} />{q.label}
                                                             </button>
                                                         ))}
@@ -1424,7 +1424,7 @@ function CampaignPageInner() {
                                                             { key: 'horizontal', label: 'Banner 16:9', w: 'w-4', h: 'h-2.5' },
                                                         ] as const).map(f => (
                                                             <button key={f.key} onClick={() => setImageFormat(f.key)}
-                                                                className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[10px] font-bold transition-all ${imageFormat === f.key ? 'bg-purple-500/15 border-purple-500/40 text-purple-300' : 'bg-white/3 border-white/8 text-white/30'}`}>
+                                                                className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[10px] font-bold transition-all ${imageFormat === f.key ? 'bg-purple-500/15 border-purple-500/40 text-purple-300' : 'bg-white/3 border-purple-500/20 text-white/30'}`}>
                                                                 <div className={`border-2 rounded-sm shrink-0 ${imageFormat === f.key ? 'border-purple-400' : 'border-white/20'} ${f.w} ${f.h}`} />
                                                                 {f.label}
                                                             </button>
@@ -1568,7 +1568,7 @@ function CampaignPageInner() {
                                             <Layers size={9} /> Carrusel
                                         </span>
                                     )}
-                                    <span className="flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/30">
+                                    <span className="flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/5 border border-purple-500/25 text-white/30">
                                         <BarChart2 size={9} /> {bidStrategy === 'auto' ? 'Puja automática' : bidStrategy === 'cost_cap' ? `Costo máx. $${bidCapAmount}` : `ROAS mín. ${minRoasTarget}x`}
                                     </span>
                                 </div>

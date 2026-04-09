@@ -5,13 +5,13 @@
 ───────────────────────────────────────────────────────────── */
 :root {
     /* colours */
-    --clr-bg: #0A0030;
-    --clr-surface: #12003D;
-    --clr-card: #0D1E79;
-    --clr-card-alt: #180055;
-    --clr-card-gradient: linear-gradient(145deg, #0D1E79 0%, #1e0068 100%);
-    --clr-border: rgba(210, 3, 221, 0.18);
-    --clr-border-lg: rgba(210, 3, 221, 0.30);
+    --clr-bg: transparent;
+    --clr-surface: rgba(13, 30, 121, 0.4);
+    --clr-card: linear-gradient(180deg, #0D1E79 0%, #D203DD 100%);
+    --clr-card-alt: linear-gradient(180deg, #D203DD 0%, #0D1E79 100%);
+    --clr-card-gradient: linear-gradient(145deg, #0D1E79 0%, #D203DD 100%);
+    --clr-border: rgba(255, 255, 255, 0.15);
+    --clr-border-lg: rgba(255, 255, 255, 0.30);
 
     --clr-accent: #D203DD;
     --clr-accent-lt: #e855f0;

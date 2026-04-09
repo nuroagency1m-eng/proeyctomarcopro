@@ -90,7 +90,7 @@ export default function BriefPage() {
     return (
         <div className="px-4 md:px-6 xl:px-10 pt-6 max-w-screen-xl 2xl:max-w-screen-2xl mx-auto pb-24 text-white">
             <div className="flex items-center gap-4 mb-8">
-                <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </Link>
                 <div className="flex-1">
@@ -139,7 +139,7 @@ export default function BriefPage() {
             ) : (
                 <div className="space-y-3">
                     {briefs.map(brief => (
-                        <div key={brief.id} className="bg-white/3 border border-white/8 rounded-2xl p-4 md:p-5 hover:border-white/15 transition-all">
+                        <div key={brief.id} className="bg-white/3 border border-purple-500/20 rounded-2xl p-4 md:p-5 hover:border-white/15 transition-all">
                             <div className="flex items-start gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/20 flex items-center justify-center shrink-0">
                                     <Building2 size={18} className="text-purple-400" />
@@ -172,14 +172,14 @@ export default function BriefPage() {
                                 </Link>
                                 <button
                                     onClick={() => { setEditingBrief(brief); setView('edit') }}
-                                    className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-all"
+                                    className="px-3 py-2 rounded-xl bg-white/5 border border-purple-500/25 text-white/50 hover:text-white hover:bg-white/10 transition-all"
                                 >
                                     <Edit3 size={14} />
                                 </button>
                                 <button
                                     onClick={() => deleteBrief(brief.id)}
                                     disabled={deletingId === brief.id}
-                                    className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/30 hover:text-red-400 hover:bg-red-500/10 hover:border-red-500/20 disabled:opacity-40 transition-all"
+                                    className="px-3 py-2 rounded-xl bg-white/5 border border-purple-500/25 text-white/30 hover:text-red-400 hover:bg-red-500/10 hover:border-red-500/20 disabled:opacity-40 transition-all"
                                 >
                                     {deletingId === brief.id ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
                                 </button>
@@ -279,7 +279,7 @@ function CreateBriefView({ onSaved, onCancel }: { onSaved: (b: Brief) => void; o
     return (
         <div className="px-4 md:px-6 xl:px-10 pt-6 max-w-screen-xl 2xl:max-w-screen-2xl mx-auto pb-24 text-white">
             <div className="flex items-center gap-4 mb-8">
-                <button onClick={onCancel} className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                <button onClick={onCancel} className="w-9 h-9 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </button>
                 <div>
@@ -297,7 +297,7 @@ function CreateBriefView({ onSaved, onCancel }: { onSaved: (b: Brief) => void; o
 
             {!brief ? (
                 <>
-                    <div className="flex gap-2 mb-6 bg-white/5 p-1 rounded-2xl border border-white/8">
+                    <div className="flex gap-2 mb-6 bg-white/5 p-1 rounded-2xl border border-purple-500/20">
                         {(['text', 'audio'] as const).map(mode => (
                             <button key={mode} onClick={() => setInputMode(mode)}
                                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all ${inputMode === mode ? 'bg-white text-black' : 'text-white/40 hover:text-white/70'}`}>
@@ -338,7 +338,7 @@ function CreateBriefView({ onSaved, onCancel }: { onSaved: (b: Brief) => void; o
                                     </div>
                                     <p className="text-sm text-white/60">Audio ({fmtTime(recordingTime)})</p>
                                     <div className="flex gap-3">
-                                        <button onClick={() => { setAudioBlob(null); setRecordingTime(0) }} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm font-bold hover:bg-white/10 transition-all flex items-center gap-2">
+                                        <button onClick={() => { setAudioBlob(null); setRecordingTime(0) }} className="px-4 py-2 rounded-xl bg-white/5 border border-purple-500/25 text-sm font-bold hover:bg-white/10 transition-all flex items-center gap-2">
                                             <RefreshCw size={14} /> Volver a grabar
                                         </button>
                                         <button onClick={transcribeAudio} disabled={transcribing} className="px-6 py-2 rounded-xl bg-purple-600 text-white text-sm font-bold hover:bg-purple-500 disabled:opacity-50 transition-all flex items-center gap-2">
@@ -364,7 +364,7 @@ function CreateBriefView({ onSaved, onCancel }: { onSaved: (b: Brief) => void; o
                     <EditBriefForm brief={brief} onChange={setBrief} />
 
                     <div className="flex gap-3 pt-2">
-                        <button onClick={onCancel} className="flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold hover:bg-white/10 transition-all">
+                        <button onClick={onCancel} className="flex-1 py-3 rounded-2xl bg-white/5 border border-purple-500/25 text-sm font-bold hover:bg-white/10 transition-all">
                             Cancelar
                         </button>
                         <button onClick={saveBrief} disabled={saving} className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold hover:opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-2">
@@ -397,7 +397,7 @@ function EditBriefView({ brief, onSaved, onCancel }: { brief: Brief; onSaved: (b
     return (
         <div className="px-4 md:px-6 xl:px-10 pt-6 max-w-screen-xl 2xl:max-w-screen-2xl mx-auto pb-24 text-white">
             <div className="flex items-center gap-4 mb-8">
-                <button onClick={onCancel} className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                <button onClick={onCancel} className="w-9 h-9 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </button>
                 <div>
@@ -413,7 +413,7 @@ function EditBriefView({ brief, onSaved, onCancel }: { brief: Brief; onSaved: (b
             )}
             <EditBriefForm brief={form} onChange={setForm} />
             <div className="flex gap-3 mt-6">
-                <button onClick={onCancel} className="flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold hover:bg-white/10 transition-all">Cancelar</button>
+                <button onClick={onCancel} className="flex-1 py-3 rounded-2xl bg-white/5 border border-purple-500/25 text-sm font-bold hover:bg-white/10 transition-all">Cancelar</button>
                 <button onClick={save} disabled={saving} className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold hover:opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-2">
                     {saving ? <><Loader2 size={16} className="animate-spin" /> Guardando...</> : <><Save size={16} /> Guardar Cambios</>}
                 </button>
@@ -475,7 +475,7 @@ function EditBriefForm({ brief, onChange }: { brief: BriefForm; onChange: (b: Br
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
     return (
-        <div className="bg-dark-900/40 border border-white/8 rounded-2xl p-5 space-y-4">
+        <div className="bg-dark-900/40 border border-purple-500/20 rounded-2xl p-5 space-y-4">
             <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">{title}</p>
             {children}
         </div>
@@ -499,7 +499,7 @@ function TagList({ label, items, onChange, placeholder }: { label: string; items
             <div className="flex gap-2">
                 <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), add())}
                     placeholder={placeholder} className="flex-1 bg-[#1c1d2e] border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500/50 placeholder:text-white/30" />
-                <button onClick={add} className="px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-bold hover:bg-purple-500/20 transition-all">+ Agregar</button>
+                <button onClick={add} className="px-3 py-2 bg-white/5 border border-purple-500/25 rounded-xl text-xs font-bold hover:bg-purple-500/20 transition-all">+ Agregar</button>
             </div>
         </div>
     )

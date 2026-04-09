@@ -167,7 +167,7 @@ export default function WalletPage() {
 
         {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-2xl bg-white/5 border border-purple-500/25 flex items-center justify-center shrink-0">
             <Wallet size={18} className="text-white/60" />
           </div>
           <div className="flex-1">
@@ -176,7 +176,7 @@ export default function WalletPage() {
           </div>
           <button
             onClick={() => setShowEarnings(true)}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 hover:text-white hover:border-white/20 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-purple-500/25 text-xs font-bold text-white/50 hover:text-white hover:border-purple-500/40 transition-colors"
           >
             <History size={13} />
             Historial
@@ -198,7 +198,7 @@ export default function WalletPage() {
         </div>
 
         {/* Withdrawal form */}
-        <div className="bg-white/[0.025] border border-white/8 rounded-2xl p-5 space-y-4">
+        <div className="bg-white/[0.025] border border-purple-500/20 rounded-2xl p-5 space-y-4">
           <p className="text-[10px] font-black uppercase tracking-widest text-white/30">Solicitar retiro</p>
 
           {/* Amount */}
@@ -213,7 +213,7 @@ export default function WalletPage() {
                 placeholder="0.00"
                 value={amount}
                 onChange={e => setAmount(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-xl pl-7 pr-4 py-2.5 text-sm text-white placeholder-white/20 outline-none focus:border-purple-500/50"
+                className="w-full bg-white/5 border border-purple-500/25 rounded-xl pl-7 pr-4 py-2.5 text-sm text-white placeholder-white/20 outline-none focus:border-purple-500/50"
               />
             </div>
             {balance && (
@@ -234,7 +234,7 @@ export default function WalletPage() {
               placeholder="TXxx... o 0x..."
               value={walletAddress}
               onChange={e => setWalletAddress(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-mono text-white/70 placeholder-white/20 outline-none focus:border-purple-500/50"
+              className="w-full bg-white/5 border border-purple-500/25 rounded-xl px-3.5 py-2.5 text-sm font-mono text-white/70 placeholder-white/20 outline-none focus:border-purple-500/50"
             />
           </div>
 
@@ -299,19 +299,19 @@ export default function WalletPage() {
           <p className="text-[10px] font-black uppercase tracking-widest text-white/30">Historial de retiros</p>
 
           {withdrawals.length === 0 ? (
-            <div className="text-center py-10 bg-white/[0.015] border border-dashed border-white/8 rounded-3xl">
+            <div className="text-center py-10 bg-white/[0.015] border border-dashed border-purple-500/20 rounded-3xl">
               <Wallet size={24} className="text-white/15 mx-auto mb-2" />
               <p className="text-xs text-white/20">Aún no tienes solicitudes de retiro</p>
             </div>
           ) : (
-            <div className="bg-white/[0.025] border border-white/8 rounded-2xl divide-y divide-white/5 overflow-hidden">
+            <div className="bg-white/[0.025] border border-purple-500/20 rounded-2xl divide-y divide-white/5 overflow-hidden">
               {withdrawals.map(w => {
                 const s = STATUS_BADGE[w.status] ?? STATUS_BADGE.PENDING
                 const Icon = s.icon
                 return (
                   <div key={w.id} className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-white/5 border border-purple-500/20 flex items-center justify-center shrink-0">
                         <Icon size={13} className={s.color.split(' ')[0]} />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -355,9 +355,9 @@ export default function WalletPage() {
           />
 
           {/* Panel */}
-          <div className="relative ml-auto w-full max-w-md h-full bg-[#0f0f14] border-l border-white/8 flex flex-col shadow-2xl">
+          <div className="relative ml-auto w-full max-w-md h-full bg-[#12003D] border-l border-purple-500/20 flex flex-col shadow-2xl">
             {/* Panel header */}
-            <div className="flex items-center gap-3 px-5 py-4 border-b border-white/8 shrink-0">
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-purple-500/20 shrink-0">
               <div className="w-8 h-8 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
                 <TrendingUp size={14} className="text-green-400" />
               </div>
@@ -391,7 +391,7 @@ export default function WalletPage() {
                     const Icon = EARNING_TYPE_ICON[e.type] ?? DollarSign
                     const color = EARNING_TYPE_COLOR[e.type] ?? 'text-white/60 bg-white/5 border-white/10'
                     return (
-                      <div key={e.id} className="flex items-center gap-3 bg-white/[0.03] border border-white/8 rounded-2xl px-3.5 py-3">
+                      <div key={e.id} className="flex items-center gap-3 bg-white/[0.03] border border-purple-500/20 rounded-2xl px-3.5 py-3">
                         <div className={`w-8 h-8 rounded-xl border flex items-center justify-center shrink-0 ${color}`}>
                           <Icon size={13} />
                         </div>
@@ -425,7 +425,7 @@ export default function WalletPage() {
 
             {/* Pagination */}
             {earningsPages > 1 && (
-              <div className="flex items-center justify-between px-5 py-3 border-t border-white/8 shrink-0">
+              <div className="flex items-center justify-between px-5 py-3 border-t border-purple-500/20 shrink-0">
                 <button
                   onClick={() => { const p = earningsPage - 1; setEarningsPage(p); loadEarnings(p) }}
                   disabled={earningsPage <= 1 || earningsLoading}

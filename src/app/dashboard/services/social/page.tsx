@@ -219,7 +219,7 @@ export default function SocialPage() {
             {/* Usage limits bar */}
             {usageLimits && (
                 <div className="mb-5 grid grid-cols-2 gap-3">
-                    <div className="glass-panel p-3 rounded-xl border border-white/10">
+                    <div className="glass-panel p-3 rounded-xl border border-purple-500/25">
                         <div className="flex items-center justify-between mb-1.5">
                             <span className="text-dark-400 text-xs">Publicaciones este mes</span>
                             <span className="text-white text-xs font-semibold">{usageLimits.monthlyCount} / {usageLimits.limits.monthlyPosts}</span>
@@ -232,7 +232,7 @@ export default function SocialPage() {
                                 }} />
                         </div>
                     </div>
-                    <div className="glass-panel p-3 rounded-xl border border-white/10">
+                    <div className="glass-panel p-3 rounded-xl border border-purple-500/25">
                         <div className="flex items-center justify-between mb-1.5">
                             <span className="text-dark-400 text-xs">Programadas activas</span>
                             <span className="text-white text-xs font-semibold">{usageLimits.scheduledCount} / {usageLimits.limits.scheduledSlots}</span>
@@ -269,7 +269,7 @@ export default function SocialPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     {/* Left: editor */}
                     <div className="lg:col-span-2 space-y-4">
-                        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+                        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                             <div className="flex items-center justify-between mb-2">
                                 <span className="text-white text-sm font-medium">Contenido</span>
                                 <div className="flex gap-2">
@@ -286,12 +286,12 @@ export default function SocialPage() {
                         </div>
 
                         {/* AI Generate */}
-                        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+                        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                             <p className="text-white text-sm font-medium mb-2 flex items-center gap-1"><Sparkles size={13} className="text-yellow-400" /> Generar con IA</p>
                             <div className="flex flex-col sm:flex-row gap-2">
                                 <input value={topic} onChange={e => setTopic(e.target.value)}
                                     placeholder="Tema del post (ej: promoción de verano)"
-                                    className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-dark-400 focus:outline-none focus:border-neon-green/50" />
+                                    className="flex-1 min-w-0 bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2 text-sm text-white placeholder-dark-400 focus:outline-none focus:border-neon-green/50" />
                                 <button onClick={() => handleAI('generate')} disabled={aiLoading || !topic}
                                     className="px-4 py-2 bg-neon-green text-black font-bold rounded-xl text-sm disabled:opacity-40 whitespace-nowrap w-full sm:w-auto">
                                     {aiLoading ? <Loader2 size={14} className="animate-spin" /> : 'Generar'}
@@ -300,7 +300,7 @@ export default function SocialPage() {
                         </div>
 
                         {/* Media */}
-                        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+                        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                             <p className="text-white text-sm font-medium mb-3">Media</p>
                             {mediaUrl ? (
                                 <div className="relative">
@@ -327,7 +327,7 @@ export default function SocialPage() {
                     {/* Right: settings */}
                     <div className="space-y-4">
                         {/* Networks */}
-                        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+                        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                             <p className="text-white text-sm font-medium mb-3">Redes sociales</p>
                             <div className="space-y-2">
                                 {NETWORKS.map(n => {
@@ -341,7 +341,7 @@ export default function SocialPage() {
                                         <div key={n.id}>
                                             <button disabled={!isConnected}
                                                 onClick={() => toggleNetwork(n.id)}
-                                                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border transition-all text-left ${isSelected ? 'border-neon-green/50 bg-neon-green/10' : 'border-white/10 bg-white/5'} ${!isConnected ? 'opacity-40 cursor-not-allowed' : 'hover:border-white/20'}`}>
+                                                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border transition-all text-left ${isSelected ? 'border-neon-green/50 bg-neon-green/10' : 'border-white/10 bg-white/5'} ${!isConnected ? 'opacity-40 cursor-not-allowed' : 'hover:border-purple-500/40'}`}>
                                                 <span className="text-lg">{n.icon}</span>
                                                 <div className="flex-1 min-w-0">
                                                     <span className="text-white text-sm font-medium">{n.label}</span>
@@ -372,7 +372,7 @@ export default function SocialPage() {
                                                                 const page = fbPages.find(p => p.pageId === e.target.value)
                                                                 if (page) setPageSelections(prev => ({ ...prev, FACEBOOK: { pageId: page.pageId, pageAccessToken: page.pageAccessToken, pageName: page.pageName } }))
                                                             }}
-                                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-neon-green/50 [&>option]:bg-[#0d0d1a]">
+                                                            className="w-full bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-neon-green/50 [&>option]:bg-[#0D1E79]/50">
                                                             <option value="">— Selecciona una página —</option>
                                                             {fbPages.map(p => (
                                                                 <option key={p.pageId} value={p.pageId}>{p.pageName}</option>
@@ -398,7 +398,7 @@ export default function SocialPage() {
                                                                 const page = igPages.find(p => p.instagram?.accountId === e.target.value)
                                                                 if (page) setPageSelections(prev => ({ ...prev, INSTAGRAM: { accountId: page.instagram.accountId, pageAccessToken: page.pageAccessToken, username: page.instagram.username } }))
                                                             }}
-                                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-neon-green/50 [&>option]:bg-[#0d0d1a]">
+                                                            className="w-full bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-neon-green/50 [&>option]:bg-[#0D1E79]/50">
                                                             <option value="">— Selecciona una cuenta —</option>
                                                             {igPages.map(p => (
                                                                 <option key={p.instagram.accountId} value={p.instagram.accountId}>@{p.instagram.username} ({p.pageName})</option>
@@ -414,22 +414,22 @@ export default function SocialPage() {
                         </div>
 
                         {/* Post type */}
-                        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+                        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                             <p className="text-white text-sm font-medium mb-3">Tipo de publicación</p>
                             <div className="grid grid-cols-2 gap-2">
                                 <button onClick={() => setPostType('feed')}
-                                    className={`py-2 rounded-xl text-sm font-medium border transition-all ${postType === 'feed' ? 'bg-neon-green text-black border-neon-green' : 'border-white/10 text-dark-400 hover:border-white/20'}`}>
+                                    className={`py-2 rounded-xl text-sm font-medium border transition-all ${postType === 'feed' ? 'bg-neon-green text-black border-neon-green' : 'border-white/10 text-dark-400 hover:border-purple-500/40'}`}>
                                     Feed
                                 </button>
                                 <button onClick={() => setPostType('story')}
-                                    className={`py-2 rounded-xl text-sm font-medium border transition-all ${postType === 'story' ? 'bg-neon-green text-black border-neon-green' : 'border-white/10 text-dark-400 hover:border-white/20'}`}>
+                                    className={`py-2 rounded-xl text-sm font-medium border transition-all ${postType === 'story' ? 'bg-neon-green text-black border-neon-green' : 'border-white/10 text-dark-400 hover:border-purple-500/40'}`}>
                                     Story
                                 </button>
                             </div>
                         </div>
 
                         {/* Schedule */}
-                        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+                        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                             <p className="text-white text-sm font-medium mb-3 flex items-center gap-1"><Calendar size={13} /> Programar</p>
                             <input
                                 type="datetime-local"
@@ -439,7 +439,7 @@ export default function SocialPage() {
                                     return d.toISOString().slice(0, 16)
                                 })()}
                                 onChange={e => setScheduledAt(e.target.value)}
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-green/50" />
+                                className="w-full bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-green/50" />
                             {scheduledAt && <p className="text-dark-400 text-xs mt-1">Se publicará automáticamente</p>}
                         </div>
 
@@ -473,7 +473,7 @@ export default function SocialPage() {
                 <div className="space-y-3">
                     <p className="text-dark-400 text-sm">Posts programados pendientes</p>
                     {posts.length === 0 ? (
-                        <div className="glass-panel p-8 rounded-2xl border border-white/10 text-center text-dark-400">
+                        <div className="glass-panel p-8 rounded-2xl border border-purple-500/25 text-center text-dark-400">
                             No hay posts programados
                         </div>
                     ) : posts.map(post => (
@@ -486,7 +486,7 @@ export default function SocialPage() {
             {tab === 'history' && (
                 <div className="space-y-3">
                     {posts.length === 0 ? (
-                        <div className="glass-panel p-8 rounded-2xl border border-white/10 text-center text-dark-400">
+                        <div className="glass-panel p-8 rounded-2xl border border-purple-500/25 text-center text-dark-400">
                             No hay publicaciones todavía
                         </div>
                     ) : posts.map(post => (
@@ -524,7 +524,7 @@ export default function SocialPage() {
                                     onChange={e => setScriptTopic(e.target.value)}
                                     onKeyDown={e => e.key === 'Enter' && handleGenerateScript()}
                                     placeholder="Describe el tema de tu video..."
-                                    className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder-dark-400 focus:outline-none focus:border-blue-400/50"
+                                    className="flex-1 min-w-0 bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2.5 text-sm text-white placeholder-dark-400 focus:outline-none focus:border-blue-400/50"
                                 />
                                 <button onClick={handleGenerateScript} disabled={scriptLoading || !scriptTopic.trim()}
                                     className="px-4 py-2.5 bg-blue-500 text-white font-semibold rounded-xl text-sm disabled:opacity-40 hover:bg-blue-400 transition-colors whitespace-nowrap w-full sm:w-auto">
@@ -533,12 +533,12 @@ export default function SocialPage() {
                             </div>
                             {script ? (
                                 <>
-                                    <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-sm text-dark-200 whitespace-pre-wrap max-h-72 overflow-y-auto leading-relaxed">
+                                    <div className="bg-white/5 border border-purple-500/25 rounded-xl p-4 text-sm text-dark-200 whitespace-pre-wrap max-h-72 overflow-y-auto leading-relaxed">
                                         {script}
                                     </div>
                                     <button
                                         onClick={() => navigator.clipboard.writeText(script)}
-                                        className="w-full py-2 rounded-xl border border-white/10 text-dark-400 hover:text-white hover:border-white/20 text-sm transition-colors">
+                                        className="w-full py-2 rounded-xl border border-purple-500/25 text-dark-400 hover:text-white hover:border-purple-500/40 text-sm transition-colors">
                                         Copiar guión
                                     </button>
                                 </>
@@ -557,7 +557,7 @@ function PostCard({ post, onDelete }: { post: any; onDelete: (id: string) => voi
     const cfg = STATUS_CONFIG[post.status] || STATUS_CONFIG.DRAFT
     const Icon = cfg.icon
     return (
-        <div className="glass-panel p-4 rounded-2xl border border-white/10">
+        <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
             <div className="flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">
                     <p className="text-white text-sm line-clamp-2">{post.content}</p>
@@ -598,7 +598,7 @@ function PostCard({ post, onDelete }: { post: any; onDelete: (id: string) => voi
 
 function MetricsPanel({ metrics, onAiAnalyze, aiLoading }: { metrics: any; onAiAnalyze: () => void; aiLoading: boolean }) {
     if (!metrics) return (
-        <div className="glass-panel p-8 rounded-2xl border border-white/10 text-center text-dark-400">
+        <div className="glass-panel p-8 rounded-2xl border border-purple-500/25 text-center text-dark-400">
             Cargando métricas...
         </div>
     )
@@ -616,7 +616,7 @@ function MetricsPanel({ metrics, onAiAnalyze, aiLoading }: { metrics: any; onAiA
                     { label: 'Fallidos', value: postStats.FAILED || 0, color: '#FF4444' },
                     { label: 'Total', value: Object.values(postStats).reduce((a, b) => a + b, 0), color: '#888' },
                 ].map(stat => (
-                    <div key={stat.label} className="glass-panel p-4 rounded-2xl border border-white/10 text-center">
+                    <div key={stat.label} className="glass-panel p-4 rounded-2xl border border-purple-500/25 text-center">
                         <p className="text-2xl font-bold" style={{ color: stat.color }}>{stat.value}</p>
                         <p className="text-dark-400 text-xs mt-1">{stat.label}</p>
                     </div>
@@ -625,7 +625,7 @@ function MetricsPanel({ metrics, onAiAnalyze, aiLoading }: { metrics: any; onAiA
 
             {/* Platform metrics */}
             {metrics.metrics && Object.entries(metrics.metrics).map(([network, data]: [string, any]) => (
-                <div key={network} className="glass-panel p-4 rounded-2xl border border-white/10">
+                <div key={network} className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                     <h3 className="text-white font-medium mb-3">{network}</h3>
                     {data.error ? (
                         <p className="text-red-400 text-sm">{data.error}</p>
@@ -714,7 +714,7 @@ function ConnectionsPanel({ connections, onRefresh }: { connections: any[]; onRe
                 <div className="mb-3">
                     <label className="text-dark-400 text-xs mb-1.5 block">Modelo</label>
                     <select value={oaiModel} onChange={e => setOaiModel(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400/50 [&>option]:bg-[#0d0d1a]">
+                        className="w-full bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400/50 [&>option]:bg-[#0D1E79]/50">
                         <option value="gpt-5.2">GPT-5.2 ⚡ Última generación — ⚠ Mayor costo</option>
                         <option value="gpt-5.1">GPT-5.1 ⭐ Más inteligente — ⚠ Mayor costo</option>
                         <option value="gpt-4.1">GPT-4.1 — Alta calidad — ⚠ Mayor costo</option>
@@ -737,7 +737,7 @@ function ConnectionsPanel({ connections, onRefresh }: { connections: any[]; onRe
                         <input value={oaiKey} onChange={e => setOaiKey(e.target.value)}
                             placeholder="sk-proj-..."
                             type="password"
-                            className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-dark-400 focus:outline-none focus:border-yellow-400/50" />
+                            className="flex-1 min-w-0 bg-white/5 border border-purple-500/25 rounded-xl px-3 py-2 text-sm text-white placeholder-dark-400 focus:outline-none focus:border-yellow-400/50" />
                         <button onClick={saveOaiKey} disabled={oaiLoading || !oaiKey.trim()}
                             className="px-3 py-2 bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 rounded-xl text-sm disabled:opacity-40 hover:bg-yellow-500/30 whitespace-nowrap w-full sm:w-auto">
                             {oaiLoading ? <Loader2 size={13} className="animate-spin" /> : 'Guardar'}
@@ -750,7 +750,7 @@ function ConnectionsPanel({ connections, onRefresh }: { connections: any[]; onRe
             <p className="text-dark-400 text-sm">Conecta tus cuentas para publicar desde aquí</p>
 
             {/* Facebook + Instagram (same OAuth) */}
-            <div className="glass-panel p-4 rounded-2xl border border-white/10">
+            <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3 min-w-0">
                         <span className="text-2xl flex-shrink-0">📘</span>
@@ -768,7 +768,7 @@ function ConnectionsPanel({ connections, onRefresh }: { connections: any[]; onRe
             </div>
 
             {/* TikTok */}
-            <div className="glass-panel p-4 rounded-2xl border border-white/10">
+            <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3 min-w-0">
                         <span className="text-2xl flex-shrink-0">🎵</span>
@@ -786,7 +786,7 @@ function ConnectionsPanel({ connections, onRefresh }: { connections: any[]; onRe
             </div>
 
             {/* YouTube */}
-            <div className="glass-panel p-4 rounded-2xl border border-white/10">
+            <div className="glass-panel p-4 rounded-2xl border border-purple-500/25">
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3 min-w-0">
                         <span className="text-2xl flex-shrink-0">▶️</span>

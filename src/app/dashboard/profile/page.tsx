@@ -84,10 +84,10 @@ export default function ProfilePage() {
           {/* Avatar */}
           <div className="relative mb-4 mt-2">
             <div className="w-20 h-20 rounded-full flex items-center justify-center"
-              style={{ background: '#050314', border: '2px solid rgba(210,3,221,0.25)', boxShadow: '0 0 20px rgba(210,3,221,0.1)' }}>
+              style={{ background: '#0A0030', border: '2px solid rgba(210,3,221,0.25)', boxShadow: '0 0 20px rgba(210,3,221,0.1)' }}>
               <UserCircle className="w-14 h-14" style={{ color: 'rgba(255,255,255,0.1)' }} />
             </div>
-            <div className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-[#03010E]"
+            <div className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-[#0A0030]"
               style={{ background: user.isActive ? '#00FF88' : '#ef4444', boxShadow: user.isActive ? '0 0 8px #00FF88' : 'none' }} />
           </div>
 

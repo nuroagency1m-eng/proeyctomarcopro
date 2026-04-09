@@ -96,7 +96,7 @@ export default function StrategiesPage() {
         <div className="px-4 md:px-6 pt-6 max-w-screen-2xl mx-auto pb-24 text-white">
             {/* Header */}
             <div className="flex items-center gap-4 mb-8">
-                <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </Link>
                 <div>
@@ -118,7 +118,7 @@ export default function StrategiesPage() {
                             <p className="text-[11px] text-white/30 truncate">{brief.industry}{brief.targetAudience ? ` · ${brief.targetAudience}` : ''}</p>
                         )}
                     </div>
-                    <Link href="/dashboard/services/ads/brief" className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-white/40 hover:text-white border border-white/10 hover:border-white/20 rounded-xl transition-all whitespace-nowrap">
+                    <Link href="/dashboard/services/ads/brief" className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-white/40 hover:text-white border border-purple-500/25 hover:border-purple-500/40 rounded-xl transition-all whitespace-nowrap">
                         <Edit2 size={11} /> Editar
                     </Link>
                 </div>
@@ -164,7 +164,7 @@ export default function StrategiesPage() {
                                 onClick={() => setDestination(f.id)}
                                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${destination === f.id
                                     ? 'bg-purple-600 text-white border-purple-600'
-                                    : 'bg-white/3 border-white/8 text-white/40 hover:border-white/20'
+                                    : 'bg-white/3 border-purple-500/20 text-white/40 hover:border-purple-500/40'
                                     }`}
                             >
                                 {f.label}
@@ -180,7 +180,7 @@ export default function StrategiesPage() {
                             onClick={() => setMediaType(f.id)}
                             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${mediaType === f.id
                                 ? 'bg-blue-600 text-white border-blue-600'
-                                : 'bg-white/3 border-white/8 text-white/40 hover:border-white/20'
+                                : 'bg-white/3 border-purple-500/20 text-white/40 hover:border-purple-500/40'
                                 }`}
                         >
                             {f.id === 'image' && <ImageIcon size={11} />}
@@ -201,7 +201,7 @@ export default function StrategiesPage() {
                     <Loader2 className="animate-spin text-purple-400" size={28} />
                 </div>
             ) : strategies.length === 0 ? (
-                <div className="text-center py-20 bg-white/[0.015] border border-dashed border-white/8 rounded-3xl px-6">
+                <div className="text-center py-20 bg-white/[0.015] border border-dashed border-purple-500/20 rounded-3xl px-6">
                     <Sparkles className="text-purple-400 mx-auto mb-4" size={28} />
                     <p className="font-bold text-sm text-white mb-1">Sin estrategias generadas</p>
                     <p className="text-xs text-white/30 mb-6">La IA generará estrategias personalizadas según tu Brief de negocio</p>
@@ -218,7 +218,7 @@ export default function StrategiesPage() {
                         return (
                             <div
                                 key={strategy.id}
-                                className="group relative bg-dark-900/40 border border-white/5 rounded-[24px] p-5 hover:border-white/15 hover:bg-dark-900/60 transition-all overflow-hidden"
+                                className="group relative bg-dark-900/40 border border-purple-500/15 rounded-[24px] p-5 hover:border-white/15 hover:bg-dark-900/60 transition-all overflow-hidden"
                             >
                                 <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full blur-[50px] opacity-5 group-hover:opacity-15 transition-opacity"
                                     style={{ background: platformColor }} />
@@ -279,7 +279,7 @@ export default function StrategiesPage() {
                                 {/* CTA */}
                                 <button
                                     onClick={() => handleSelect(strategy)}
-                                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-bold text-white/70 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:text-white transition-all"
+                                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-purple-500/25 text-sm font-bold text-white/70 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:text-white transition-all"
                                 >
                                     Usar esta estrategia <ArrowRight size={14} />
                                 </button>
