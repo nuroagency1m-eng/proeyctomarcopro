@@ -82,7 +82,7 @@ export default function CoursesPage() {
       {/* Header */}
       <div className="mb-6 flex items-start justify-between gap-3 flex-wrap">
         <div className="min-w-0">
-          <h1 className="text-xl font-bold text-white uppercase tracking-widest">JD Academy</h1>
+          <h1 className="text-xl font-bold text-white uppercase tracking-widest">MY DIAMOND Academy</h1>
           <div className="h-px w-20 mt-2 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #D203DD, #FF2DF7, transparent)' }} />
           <p className="text-xs text-white/30 mt-2">Accede a cursos exclusivos de MY DIAMOND.</p>
         </div>

@@ -32,12 +32,9 @@ interface Course {
   enrollment: Enrollment | null
 }
 
-function getYouTubeEmbedUrl(url: string): string {
-  const params = '?modestbranding=1&rel=0&iv_load_policy=3&color=white&enablejsapi=1'
-  const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/)
-  if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}${params}`
-  const longMatch = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/)
-  if (longMatch) return `https://www.youtube.com/embed/${longMatch[1]}${params}`
+function getVimeoEmbedUrl(url: string): string {
+  const match = url.match(/vimeo\.com\/(\d+)/)
+  if (match) return `https://player.vimeo.com/video/${match[1]}?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1`
   return url
 }
 
@@ -311,9 +308,9 @@ export default function CourseDetailPage() {
                 <div style={{ position: 'relative', paddingBottom: '56.25%', background: '#000' }}>
                   <iframe
                     ref={el => { iframeRefs.current[video.id] = el }}
-                    src={getYouTubeEmbedUrl(video.youtubeUrl)}
+                    src={getVimeoEmbedUrl(video.youtubeUrl)}
                     title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
                   />

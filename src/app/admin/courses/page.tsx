@@ -519,7 +519,7 @@ export default function AdminCoursesPage() {
             {/* Videos */}
             <div style={{ marginBottom: 14 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>Videos (YouTube)</label>
+                <label style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>Videos (Vimeo)</label>
                 <button onClick={addVideo}
                   style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: '#D203DD', background: 'none', border: 'none', cursor: 'pointer' }}>
                   <Plus size={12} /> Agregar
@@ -533,7 +533,7 @@ export default function AdminCoursesPage() {
                       style={{ width: '100%', padding: '8px 10px', borderRadius: 8, fontSize: 12, color: '#fff',
                         background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', outline: 'none', marginBottom: 5, boxSizing: 'border-box' }} />
                     <input type="text" value={v.youtubeUrl} onChange={e => setVideo(idx, 'youtubeUrl', e.target.value)}
-                      placeholder="https://youtube.com/watch?v=..."
+                      placeholder="https://vimeo.com/123456789"
                       style={{ width: '100%', padding: '8px 10px', borderRadius: 8, fontSize: 12, color: '#fff',
                         background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', outline: 'none', boxSizing: 'border-box' }} />
                   </div>
