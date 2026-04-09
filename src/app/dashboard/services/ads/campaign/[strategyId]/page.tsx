@@ -653,7 +653,7 @@ function CampaignPageInner() {
                 SECCIÓN 1 — CONFIGURACIÓN
             ══════════════════════════════════════════════ */}
             <div className={`mb-4 rounded-3xl border transition-all overflow-hidden ${configSaved ? 'border-green-500/20' : 'border-white/8'}`}
-                style={{ background: configSaved ? 'rgba(16,185,129,0.02)' : 'rgba(255,255,255,0.02)' }}>
+                style={{ background: configSaved ? 'rgba(16,185,129,0.06)' : 'rgba(13,30,121,0.4)' }}>
 
                 {/* Section header */}
                 <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-white/5">
@@ -1004,7 +1004,7 @@ function CampaignPageInner() {
                 SECCIÓN 2 — CREATIVOS & TEXTOS
             ══════════════════════════════════════════════ */}
             <div ref={creativesRef} className={`mb-4 rounded-3xl border transition-all overflow-hidden relative ${!configSaved ? 'border-white/5' : 'border-white/8'}`}
-                style={{ background: 'rgba(255,255,255,0.015)' }}>
+                style={{ background: 'rgba(13,30,121,0.35)' }}>
 
                 {!configSaved && (
                     <div className="absolute inset-0 z-10 flex items-center justify-center rounded-3xl">
