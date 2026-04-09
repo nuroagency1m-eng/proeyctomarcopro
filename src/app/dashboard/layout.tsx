@@ -12,7 +12,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="dashboard-root" style={{ background: '#07102e' }}>
+    <div className="dashboard-root" style={{ background: '#0A0030' }}>
       <PlanGuard />
       <InactivityLogout />
       <PermissionsModal />

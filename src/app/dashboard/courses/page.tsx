@@ -153,8 +153,8 @@ export default function CoursesPage() {
                 style={{
                   borderRadius: 16,
                   overflow: 'hidden',
-                  background: isLocked ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.03)',
-                  border: `1px solid ${isLocked ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.07)'}`,
+                  background: isLocked ? 'rgba(13,30,121,0.3)' : 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)',
+                  border: `1px solid ${isLocked ? 'rgba(210,3,221,0.08)' : 'rgba(210,3,221,0.25)'}`,
                   opacity: isLocked ? 0.7 : 1,
                   cursor: isLocked ? 'default' : 'pointer',
                   transition: 'border-color 0.2s, transform 0.15s',

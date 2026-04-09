@@ -9,17 +9,17 @@ const SECTIONS = [
     label: 'Cursos',
     desc: 'Aprende con cursos exclusivos paso a paso. Desbloquea cada lección completando la anterior.',
     color: '#D203DD',
-    colorBg: 'rgba(210,3,221,0.08)',
-    colorBorder: 'rgba(210,3,221,0.2)',
+    colorBg: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)',
+    colorBorder: 'rgba(210,3,221,0.35)',
   },
   {
     href: '/dashboard/podcasts',
     icon: 'fa-solid fa-microphone',
     label: 'Podcasts',
     desc: 'Escucha episodios exclusivos con estrategias, casos de éxito y tendencias del mercado.',
-    color: '#00FF88',
-    colorBg: 'rgba(0,255,136,0.06)',
-    colorBorder: 'rgba(0,255,136,0.18)',
+    color: '#D203DD',
+    colorBg: 'linear-gradient(145deg, #1e0068 0%, #0D1E79 100%)',
+    colorBorder: 'rgba(210,3,221,0.35)',
   },
 ]
 

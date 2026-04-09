@@ -294,7 +294,7 @@ export default function CourseDetailPage() {
 
       {/* Locked — no plan */}
       {isLocked && (
-        <div style={{ padding: '16px 18px', borderRadius: 14, marginBottom: 20, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', textAlign: 'center' }}>
+        <div style={{ padding: '16px 18px', borderRadius: 14, marginBottom: 20, background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.25)', textAlign: 'center' }}>
           <p style={{ fontSize: 22, marginBottom: 8 }}>🔒</p>
           <p style={{ fontSize: 14, color: '#fff', fontWeight: 700, marginBottom: 6 }}>Curso no disponible</p>
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginBottom: 14 }}>Necesitas un plan activo para acceder a los cursos.</p>
@@ -378,8 +378,8 @@ export default function CourseDetailPage() {
           )}
 
           {/* Playlist */}
-          <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.07)' }}>
-            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(210,3,221,0.25)' }}>
+            <div style={{ background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', padding: '10px 16px', borderBottom: '1px solid rgba(210,3,221,0.2)' }}>
               <p style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.4)', margin: 0, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 Contenido del curso
               </p>
@@ -398,10 +398,10 @@ export default function CourseDetailPage() {
                     style={{
                       display: 'flex', alignItems: 'center', gap: 12,
                       padding: '12px 16px',
-                      background: isActive ? 'rgba(210,3,221,0.1)' : 'transparent',
+                      background: isActive ? 'rgba(210,3,221,0.15)' : 'rgba(0,0,0,0.15)',
                       borderLeft: isActive ? '3px solid #D203DD' : '3px solid transparent',
                       borderRight: 'none', borderTop: 'none',
-                      borderBottom: idx < course.videos.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                      borderBottom: idx < course.videos.length - 1 ? '1px solid rgba(210,3,221,0.1)' : 'none',
                       cursor: isUnlocked ? 'pointer' : 'default',
                       textAlign: 'left', width: '100%',
                       opacity: isUnlocked ? 1 : 0.45,

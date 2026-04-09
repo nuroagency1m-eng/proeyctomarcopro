@@ -107,8 +107,8 @@ export default function PodcastsPage() {
               className="hover:scale-[1.01] transition-transform">
               <div style={{
                 borderRadius: 16, overflow: 'hidden',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.07)',
+                background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)',
+                border: '1px solid rgba(210,3,221,0.25)',
                 cursor: 'pointer', display: 'flex', flexDirection: 'column', height: '100%',
               }}>
                 {/* Cover */}

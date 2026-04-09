@@ -5,12 +5,13 @@
 ───────────────────────────────────────────────────────────── */
 :root {
     /* colours */
-    --clr-bg: #07102e;
-    --clr-surface: #0b1640;
-    --clr-card: #0f1c52;
-    --clr-card-alt: #132060;
-    --clr-border: rgba(210, 3, 221, 0.10);
-    --clr-border-lg: rgba(210, 3, 221, 0.18);
+    --clr-bg: #0A0030;
+    --clr-surface: #12003D;
+    --clr-card: #0D1E79;
+    --clr-card-alt: #180055;
+    --clr-card-gradient: linear-gradient(145deg, #0D1E79 0%, #1e0068 100%);
+    --clr-border: rgba(210, 3, 221, 0.18);
+    --clr-border-lg: rgba(210, 3, 221, 0.30);
 
     --clr-accent: #D203DD;
     --clr-accent-lt: #e855f0;
@@ -173,10 +174,10 @@
     align-items: center;
     justify-content: center;
     gap: 48px;
-    background: #040c20;
+    background: #0A0030;
     background-image:
-        radial-gradient(at 0% 0%, hsla(226,80%,10%,1) 0, transparent 50%),
-        radial-gradient(at 50% 0%, hsla(295,90%,20%,0.18) 0, transparent 60%),
+        radial-gradient(at 0% 0%, hsla(270,100%,12%,1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(295,90%,25%,0.25) 0, transparent 60%),
         radial-gradient(at 100% 100%, hsla(295,90%,15%,0.12) 0, transparent 50%);
     z-index: 9999;
 }
@@ -396,7 +397,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(7, 16, 46, 0.70) 100%);
+    background: linear-gradient(to bottom, transparent 40%, rgba(10, 0, 48, 0.80) 100%);
     pointer-events: none;
 }
 
@@ -725,7 +726,7 @@
     object-fit: contain;
     object-position: center;
     display: block;
-    background: #0b1640;
+    background: #12003D;
     padding: 4px;
 }
 

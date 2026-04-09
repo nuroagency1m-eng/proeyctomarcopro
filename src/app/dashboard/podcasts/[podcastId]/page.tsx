@@ -76,7 +76,7 @@ export default function PodcastDetailPage() {
 
       {/* Info */}
       {podcast.description && (
-        <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
+        <div style={{ padding: '16px', borderRadius: 12, background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.2)' }}>
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, margin: 0 }}>{podcast.description}</p>
         </div>
       )}
