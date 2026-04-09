@@ -7,7 +7,7 @@ import NotificationBell from './NotificationBell'
 
 const serviceItems = [
   { href: '/dashboard/services/ads',           iconClass: 'fa-solid fa-bullhorn',     label: 'Ads' },
-  { href: '/dashboard/services/whatsapp',      iconClass: 'fa-brands fa-whatsapp',    label: 'WhatsApp' },
+  { href: '/dashboard/services/whatsapp',      iconClass: 'fa-brands fa-whatsapp',    label: 'Agentes de AI' },
   { href: '/dashboard/services/social',        iconClass: 'fa-solid fa-share-nodes',  label: 'Social' },
   { href: '/dashboard/services/sales',         iconClass: 'fa-solid fa-chart-line',   label: 'Sales' },
   { href: '/dashboard/services/landing-pages', iconClass: 'fa-solid fa-file',         label: 'Landing' },
