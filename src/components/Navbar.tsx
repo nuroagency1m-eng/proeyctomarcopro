@@ -11,7 +11,6 @@ const serviceItems = [
   { href: '/dashboard/services/social',        iconClass: 'fa-solid fa-share-nodes',  label: 'Social' },
   { href: '/dashboard/services/landing-pages', iconClass: 'fa-solid fa-file',         label: 'Landing' },
   { href: '/dashboard/services/virtual-store', iconClass: 'fa-solid fa-shop',         label: 'Tienda' },
-  { href: '/dashboard/services/marketplace',   iconClass: 'fa-solid fa-cube',         label: 'Market' },
   { href: '/dashboard/services/clipping',      iconClass: 'fa-solid fa-newspaper',    label: 'Clipping' },
 ]
 

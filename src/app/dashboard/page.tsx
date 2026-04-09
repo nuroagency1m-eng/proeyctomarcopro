@@ -29,7 +29,6 @@ const SERVICES = [
   { href: '/dashboard/services/social',        icon: 'fa-solid fa-share-nodes',  label: 'Social',         desc: 'Programa y publica contenido en tus redes sociales.',                color: '#e855f0' },
   { href: '/dashboard/services/landing-pages', icon: 'fa-solid fa-file',         label: 'Landing Pages',  desc: 'Diseña páginas de aterrizaje para captar clientes.',                 color: '#a855f7' },
   { href: '/dashboard/services/virtual-store', icon: 'fa-solid fa-shop',         label: 'Tienda Virtual', desc: 'Crea tu propia tienda online y vende tus productos.',                color: '#38bdf8' },
-  { href: '/dashboard/services/marketplace',   icon: 'fa-solid fa-cube',         label: 'Marketplace',    desc: 'Publica y vende tus cursos digitales a toda la comunidad.',          color: '#fb7185' },
   { href: '/dashboard/services/clipping',      icon: 'fa-solid fa-newspaper',    label: 'Clipping',       desc: 'Gana dinero creando contenido en TikTok, YouTube y Facebook.',       color: '#f472b6' },
 ]
 
