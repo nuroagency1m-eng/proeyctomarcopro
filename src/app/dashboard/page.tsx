@@ -6,15 +6,6 @@ import Link from 'next/link'
 import PrismLoader from '@/components/PrismLoader'
 import NotificationBell from '@/components/NotificationBell'
 
-interface NetworkMember {
-  id: string
-  username: string
-  fullName: string
-  isActive: boolean
-  plan: string
-  level: number
-}
-
 interface DashboardData {
   user: {
     fullName: string
@@ -24,28 +15,27 @@ interface DashboardData {
     rank?: string
     planExpiresAt?: string | null
   }
-  tree: NetworkMember[]
-  stats: {
-    directReferrals: number
-    totalNetwork: number
-    totalActive: number
-    totalCommissions: number
-    earningsToday: number
-    earningsYesterday: number
-    earningsWeek: number
-    sponsorshipBonus: number
-    sponsorshipLevels: { level1: number; level2: number; level3: number; other: number }
-    directBonus: number
-    extraBonus: number
-    sharedBonus: number
-    pendingBalance: number
-  }
 }
 
 const IMAGES = [
   'https://i.ibb.co/ksmGqK0R/estrategia-metaverso-de-meta-2025-detalle2-1024x573.jpg',
   'https://i.ibb.co/Z1vWB05C/estrategia-metaverso-de-meta-2025-detalle1-1024x573.jpg',
   'https://i.ibb.co/cK5Wv5yG/estrategia-metaverso-de-meta-2025.jpg',
+]
+
+const SERVICES = [
+  { href: '/dashboard/services/ads',           icon: 'fa-solid fa-bullhorn',     label: 'Ads',           desc: 'Campañas publicitarias',      color: '#D203DD' },
+  { href: '/dashboard/services/whatsapp',      icon: 'fa-brands fa-whatsapp',    label: 'WhatsApp',      desc: 'Bots y automatización',       color: '#22c55e' },
+  { href: '/dashboard/services/social',        icon: 'fa-solid fa-share-nodes',  label: 'Social',        desc: 'Publicaciones y métricas',    color: '#e855f0' },
+  { href: '/dashboard/services/sales',         icon: 'fa-solid fa-chart-line',   label: 'Sales',         desc: 'Seguimiento de ventas',       color: '#fbbf24' },
+  { href: '/dashboard/services/landing-pages', icon: 'fa-solid fa-file',         label: 'Landing Pages', desc: 'Crea páginas de conversión',  color: '#a855f7' },
+  { href: '/dashboard/services/virtual-store', icon: 'fa-solid fa-shop',         label: 'Tienda Virtual', desc: 'Tu escaparate digital',      color: '#38bdf8' },
+  { href: '/dashboard/services/marketplace',   icon: 'fa-solid fa-cube',         label: 'Marketplace',   desc: 'Vende tus cursos',            color: '#fb7185' },
+  { href: '/dashboard/services/clipping',      icon: 'fa-solid fa-newspaper',    label: 'Clipping',      desc: 'Monitoreo de contenido',      color: '#f472b6' },
+  { href: '/dashboard/courses',                icon: 'fa-solid fa-book-open',    label: 'Academy',       desc: 'Cursos y formación',          color: '#D203DD' },
+  { href: '/dashboard/store',                  icon: 'fa-solid fa-bag-shopping', label: 'Shop',          desc: 'Tienda MY DIAMOND',           color: '#e855f0' },
+  { href: '/dashboard/wallet',                 icon: 'fa-solid fa-wallet',       label: 'Wallet',        desc: 'Saldo y retiros',             color: '#22c55e' },
+  { href: '/dashboard/planes',                 icon: 'fa-solid fa-crown',        label: 'Planes',        desc: 'Gestiona tu membresía',       color: '#fbbf24' },
 ]
 
 export default function DashboardPage() {
@@ -98,7 +88,6 @@ export default function DashboardPage() {
     }
   }
 
-  // Update sidebar user info (name, handle, avatar)
   useEffect(() => {
     if (!data?.user) return
     const nameEl = document.querySelector('.sidebar__user-name')
@@ -118,28 +107,12 @@ export default function DashboardPage() {
     </div>
   )
 
-  const earnings = {
-    today: data.stats.earningsToday,
-    yesterday: data.stats.earningsYesterday,
-    week: data.stats.earningsWeek,
-    total: data.stats.totalCommissions,
-    patrocinio: data.stats.sponsorshipBonus,
-    extra: data.stats.extraBonus,
-    direct: data.stats.directBonus,
-  }
-
-  const todayVsYesterday = earnings.yesterday > 0
-    ? ((earnings.today - earnings.yesterday) / earnings.yesterday * 100)
-    : earnings.today > 0 ? 100 : 0
-  const todayUp = earnings.today >= earnings.yesterday
-  const weekUp = earnings.week > 0
-
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════
            MOBILE VIEW
       ═══════════════════════════════════════════════════════════ */}
-      <div className="lg:hidden flex flex-col min-h-screen w-full" style={{ position:'relative' }}>
+      <div className="lg:hidden flex flex-col min-h-screen w-full" style={{ position: 'relative' }}>
 
         {/* Cover Photo */}
         <div className="cover" id="cover">
@@ -151,18 +124,9 @@ export default function DashboardPage() {
               <button key={i} onClick={() => setImgIdx(i)} className={`cover__dot ${imgIdx === i ? 'cover__dot--active' : ''}`} aria-label={`Slide ${i + 1}`}></button>
             ))}
           </div>
-          {/* Botones esquinas */}
-          {/* Settings: solo desktop */}
-          <Link href="/dashboard/settings" className="hidden lg:flex" style={{ position:'absolute', top:8, left:8, width:30, height:30, alignItems:'center', justifyContent:'center', borderRadius:8, background:'rgba(0,0,0,0.4)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.15)', color:'rgba(255,255,255,0.9)', fontSize:13, zIndex:10 }}>
-            <i className="fa-solid fa-gear"></i>
-          </Link>
-          {/* Campana: solo móvil, en lugar del settings */}
-          <div className="lg:hidden" style={{ position:'absolute', top:8, left:8, zIndex:10 }}>
+          <div className="lg:hidden" style={{ position: 'absolute', top: 8, left: 8, zIndex: 10 }}>
             <NotificationBell />
           </div>
-          <button onClick={async()=>{ await fetch('/api/auth/logout',{method:'POST'}); window.location.href='/login' }} style={{ position:'absolute', top:8, right:8, width:30, height:30, display:'flex', alignItems:'center', justifyContent:'center', borderRadius:8, background:'rgba(0,0,0,0.4)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,80,80,0.3)', cursor:'pointer', color:'rgba(255,90,90,1)', fontSize:13, zIndex:10 }}>
-            <i className="fa-solid fa-right-from-bracket"></i>
-          </button>
         </div>
 
         {/* Profile */}
@@ -197,13 +161,11 @@ export default function DashboardPage() {
               fontWeight: 700, fontSize: 13, letterSpacing: '0.04em',
               background: data.user.rank && data.user.rank !== 'NONE'
                 ? 'linear-gradient(135deg, rgba(210,3,221,0.12) 0%, rgba(0,255,136,0.08) 100%)'
-                : 'linear-gradient(135deg, #D203DD 0%, #00FF88 100%)',
+                : 'linear-gradient(135deg, #D203DD 0%, #0D1E79 100%)',
               border: data.user.rank && data.user.rank !== 'NONE'
                 ? '1px solid rgba(210,3,221,0.25)'
                 : 'none',
-              color: data.user.rank && data.user.rank !== 'NONE'
-                ? '#D203DD'
-                : '#000',
+              color: data.user.rank && data.user.rank !== 'NONE' ? '#D203DD' : '#fff',
             }}
           >
             <i className={`fa-solid ${data.user.rank && data.user.rank !== 'NONE' ? 'fa-rotate' : 'fa-crown'}`}></i>
@@ -211,120 +173,20 @@ export default function DashboardPage() {
           </Link>
         </div>
 
-        {/* Feed */}
+        {/* Services Grid — mobile */}
         <main className="feed" id="feed">
-          {/* Hero total */}
+          <p className="section-label"><i className="fa-solid fa-th-large"></i>Servicios</p>
           <div className="grid-2">
-            <div className="d-card-comp metric metric--hero col-2">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="icon-chip chip--green"><i className="fa-solid fa-chart-line"></i></div>
-                <span className="u-pill u-pill--up"><i className="fa-solid fa-arrow-trend-up"></i>+${earnings.total.toFixed(2)}</span>
-              </div>
-              <div>
-                <p className="metric__label">Ganancias Acumuladas · Total</p>
-                <p className="metric__value metric__value--hero">${earnings.total.toFixed(2)}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Earnings */}
-          <p className="section-label"><i className="fa-solid fa-chart-bar"></i>Ganancias</p>
-          <div className="grid-2">
-
-            <div className="d-card-comp metric">
-              <div className="icon-chip chip--rose"><i className="fa-solid fa-sun"></i></div>
-              <p className="metric__label">Hoy</p>
-              <p className="metric__value metric__value--dim">${earnings.today.toFixed(2)}</p>
-              {todayVsYesterday !== 0
-                ? <p className={`metric__delta ${todayUp ? 'u-up' : 'u-down'}`}><i className={`fa-solid fa-arrow-${todayUp ? 'up' : 'down'}`}></i> {todayUp ? '+' : ''}{todayVsYesterday.toFixed(1)}% vs ayer</p>
-                : <p className="metric__delta u-flat">Sin cambio vs ayer</p>
-              }
-            </div>
-
-            <div className="d-card-comp metric">
-              <div className="icon-chip chip--accent"><i className="fa-solid fa-moon"></i></div>
-              <p className="metric__label">Ayer</p>
-              <p className="metric__value">${earnings.yesterday.toFixed(2)}</p>
-              <p className="metric__delta u-flat">Día anterior</p>
-            </div>
-
-            <div className="d-card-comp metric col-2">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div>
-                  <p className="metric__label">Semana</p>
-                  <p className="metric__value">${earnings.week.toFixed(2)}</p>
+            {SERVICES.map(s => (
+              <Link key={s.href} href={s.href} className="d-card-comp metric" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+                <div className="icon-chip" style={{ background: `${s.color}18`, color: s.color, width: 38, height: 38 }}>
+                  <i className={s.icon}></i>
                 </div>
-                <div className="icon-chip chip--green" style={{ width: '46px', height: '46px', fontSize: '1.1rem' }}>
-                  <i className="fa-solid fa-calendar-week"></i>
-                </div>
-              </div>
-              <p className={`metric__delta ${weekUp ? 'u-up' : 'u-flat'}`}><i className={`fa-solid fa-arrow-trend-${weekUp ? 'up' : 'right'}`}></i></p>
-            </div>
-
+                <p className="metric__label" style={{ marginTop: 4 }}>{s.label}</p>
+                <p style={{ fontSize: '.7rem', color: 'var(--clr-muted)', margin: 0 }}>{s.desc}</p>
+              </Link>
+            ))}
           </div>
-
-          {/* Distribution */}
-          <p className="section-label"><i className="fa-solid fa-coins"></i>Distribución</p>
-          <div className="grid-3">
-
-            <div className="d-card-comp metric">
-              <div className="icon-chip chip--amber"><i className="fa-solid fa-handshake"></i></div>
-              <p className="metric__label">Patrocinio</p>
-              <p className="metric__value metric__value--amber">${earnings.patrocinio.toFixed(0)}</p>
-              <p className="metric__delta u-up"><i className="fa-solid fa-check"></i> Comisión directa</p>
-            </div>
-
-            <div className="d-card-comp metric">
-              <div className="icon-chip chip--cyan"><i className="fa-solid fa-bolt"></i></div>
-              <p className="metric__label">Directo</p>
-              <p className="metric__value metric__value--dim">${earnings.direct.toFixed(0)}</p>
-              <p className="metric__delta u-flat">Bono directo</p>
-            </div>
-
-            <div className="d-card-comp metric">
-              <div className="icon-chip chip--pink"><i className="fa-solid fa-gift"></i></div>
-              <p className="metric__label">B. Extra</p>
-              <p className="metric__value metric__value--dim">${earnings.extra.toFixed(0)}</p>
-              <p className="metric__delta u-flat">Bono extra</p>
-            </div>
-
-          </div>
-
-          {/* Network */}
-          <p className="section-label"><i className="fa-solid fa-network-wired"></i>Mi Red</p>
-          <div className="grid-2">
-
-            <Link href="/dashboard/network" className="d-card-comp metric" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-              <div className="icon-chip chip--accent"><i className="fa-solid fa-diagram-project"></i></div>
-              <p className="metric__label">Total Red</p>
-              <p className="metric__value metric__value--net">{data.stats.totalNetwork}</p>
-              <p className="metric__delta u-flat">miembros</p>
-            </Link>
-
-            <Link href="/dashboard/network" className="d-card-comp metric" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-              <div className="icon-chip chip--cyan"><i className="fa-solid fa-user-group"></i></div>
-              <p className="metric__label">Directos</p>
-              <p className="metric__value metric__value--net-cyan">{data.stats.directReferrals}</p>
-              <p className="metric__delta u-flat">nivel 1</p>
-            </Link>
-
-          </div>
-
-          {/* Marketplace — mobile */}
-          <p className="section-label"><i className="fa-solid fa-store"></i>Marketplace</p>
-          <div className="grid-2">
-            <Link href="/marketplace" className="d-card-comp metric" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-              <div className="icon-chip chip--cyan"><i className="fa-solid fa-graduation-cap"></i></div>
-              <p className="metric__label">Marketplace</p>
-              <p className="metric__delta u-flat">Explorar cursos</p>
-            </Link>
-            <div className="d-card-comp metric" style={{ cursor: 'default' }}>
-              <div className="icon-chip chip--rose"><i className="fa-solid fa-bag-shopping"></i></div>
-              <p className="metric__label">Mis Pedidos</p>
-              <p className="metric__delta u-flat">Próximamente</p>
-            </div>
-          </div>
-
         </main>
       </div>
 
@@ -332,8 +194,6 @@ export default function DashboardPage() {
            DESKTOP VIEW
       ═══════════════════════════════════════════════════════════ */}
       <div className="hidden lg:flex w-full flex-1">
-
-        {/* Main content */}
         <main className="d-main">
 
           {/* Banner + Profile */}
@@ -342,7 +202,6 @@ export default function DashboardPage() {
               <div key={i} style={{ position: 'absolute', inset: 0, backgroundImage: `url('${img}')`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: imgIdx === i ? 1 : 0, transition: 'opacity 1.3s ease' }} />
             ))}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,16,46,0.88) 0%, rgba(7,16,46,0.25) 100%)' }} />
-            {/* Profile overlay */}
             <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', gap: '20px', padding: '0 28px' }}>
               <div className="avatar-wrap" style={{ marginTop: 0 }}>
                 <div className="avatar-ring" />
@@ -362,7 +221,6 @@ export default function DashboardPage() {
                 </span>
               </div>
             </div>
-            {/* Dots */}
             <div className="cover__dots">
               {IMAGES.map((_, i) => (
                 <button key={i} onClick={() => setImgIdx(i)} className={`cover__dot ${imgIdx === i ? 'cover__dot--active' : ''}`} aria-label={`Slide ${i + 1}`} />
@@ -376,11 +234,6 @@ export default function DashboardPage() {
               <h1 className="topbar__title">Dashboard</h1>
               <p className="topbar__sub">MY DIAMOND &nbsp;·&nbsp; <span className="tag-active"><span className="u-live-dot"></span>&nbsp;{data.user.rank || 'Plan'} {data.user.isActive ? 'Activo' : 'Inactivo'}</span></p>
             </div>
-            <div className="period-toggle" role="group" aria-label="Período">
-              <button className="period-btn period-btn--active">Total</button>
-              <button className="period-btn">30 días</button>
-              <button className="period-btn">7 días</button>
-            </div>
           </header>
 
           {/* Countdown / CTA Plan */}
@@ -391,197 +244,56 @@ export default function DashboardPage() {
                   <i className="fa-solid fa-clock" style={{ color: 'var(--clr-accent-lt)' }}></i>&nbsp; Plan {data.user.rank} · Vence en
                 </p>
                 <div className="countdown-units">
-                  <div className="countdown-unit">
-                    <span className="countdown-num">{countdown ? String(countdown.d).padStart(2, '0') : '00'}</span>
-                    <span className="countdown-lbl">Días</span>
-                  </div>
-                  <span className="countdown-sep">:</span>
-                  <div className="countdown-unit">
-                    <span className="countdown-num">{countdown ? String(countdown.h).padStart(2, '0') : '00'}</span>
-                    <span className="countdown-lbl">Horas</span>
-                  </div>
-                  <span className="countdown-sep">:</span>
-                  <div className="countdown-unit">
-                    <span className="countdown-num">{countdown ? String(countdown.m).padStart(2, '0') : '00'}</span>
-                    <span className="countdown-lbl">Min</span>
-                  </div>
-                  <span className="countdown-sep">:</span>
-                  <div className="countdown-unit">
-                    <span className="countdown-num">{countdown ? String(countdown.s).padStart(2, '0') : '00'}</span>
-                    <span className="countdown-lbl">Seg</span>
-                  </div>
+                  {[{ v: countdown?.d, l: 'Días' }, { v: countdown?.h, l: 'Horas' }, { v: countdown?.m, l: 'Min' }, { v: countdown?.s, l: 'Seg' }].map((u, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+                      {i > 0 && <span className="countdown-sep">:</span>}
+                      <div className="countdown-unit">
+                        <span className="countdown-num">{u.v !== undefined ? String(u.v).padStart(2, '0') : '00'}</span>
+                        <span className="countdown-lbl">{u.l}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <Link href="/dashboard/planes" className="renew-btn"><i className="fa-solid fa-rotate"></i> Renovar Plan</Link>
             </div>
           ) : (
-            <div className="d-card-comp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, background: 'linear-gradient(135deg, rgba(210,3,221,0.08) 0%, rgba(0,255,136,0.05) 100%)', border: '1px solid rgba(210,3,221,0.2)' }}>
+            <div className="d-card-comp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, background: 'linear-gradient(135deg, rgba(210,3,221,0.08) 0%, rgba(13,30,121,0.12) 100%)', border: '1px solid rgba(210,3,221,0.2)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div className="icon-chip chip--accent" style={{ width: 50, height: 50, fontSize: '1.3rem', flexShrink: 0 }}>
                   <i className="fa-solid fa-crown"></i>
                 </div>
                 <div>
                   <p style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', margin: 0 }}>¡Activa tu Plan MY DIAMOND!</p>
-                  <p style={{ fontSize: '.78rem', color: 'rgba(255,255,255,0.4)', margin: '4px 0 0' }}>Desbloquea comisiones, bonos y acceso completo a la red.</p>
+                  <p style={{ fontSize: '.78rem', color: 'rgba(255,255,255,0.4)', margin: '4px 0 0' }}>Desbloquea acceso completo a todos los servicios.</p>
                 </div>
               </div>
-              <Link href="/dashboard/planes" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #D203DD 0%, #00FF88 100%)', color: '#000', fontWeight: 800, fontSize: '.85rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+              <Link href="/dashboard/planes" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #D203DD 0%, #0D1E79 100%)', color: '#fff', fontWeight: 800, fontSize: '.85rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
                 <i className="fa-solid fa-crown"></i> Comprar Plan
               </Link>
             </div>
           )}
 
-          {/* Earnings section */}
+          {/* Services Grid — desktop */}
           <section>
-            <p className="section-label" style={{ marginBottom: 'var(--sp-4)' }}><i className="fa-solid fa-chart-line"></i>Resumen de Ganancias</p>
+            <p className="section-label" style={{ marginBottom: 'var(--sp-4)' }}><i className="fa-solid fa-th-large"></i>Servicios</p>
             <div className="d-grid d-grid-4">
-
-              {/* Hero */}
-              <div className="d-card-comp card--accent d-card d-col-2">
-                <div className="d-card__top">
-                  <div>
-                    <p className="d-card__label" style={{ marginBottom: 'var(--sp-2)' }}>Acumulado Total</p>
-                    <p className="d-card__value d-card__value--lg">${earnings.total.toFixed(2)}</p>
-                  </div>
-                  <div className="icon-chip chip--green" style={{ width: '50px', height: '50px', fontSize: '1.2rem' }}>
-                    <i className="fa-solid fa-trophy"></i>
-                  </div>
-                </div>
-                <span className="u-pill u-pill--up"><i className="fa-solid fa-arrow-trend-up"></i> +${earnings.week.toFixed(2)} en 7 días</span>
-              </div>
-
-              <div className="d-card-comp d-card">
-                <div className="d-card__top">
-                  <div className="icon-chip chip--rose"><i className="fa-solid fa-sun"></i></div>
-                  <span className={`u-pill ${todayVsYesterday > 0 ? 'u-pill--up' : todayVsYesterday < 0 ? 'u-pill--down' : 'u-pill--flat'}`}>
-                    {todayVsYesterday !== 0 && <i className={`fa-solid fa-arrow-${todayVsYesterday > 0 ? 'up' : 'down'}`}></i>}
-                    {' '}{todayVsYesterday > 0 ? '+' : ''}{todayVsYesterday.toFixed(0)}% vs ayer
-                  </span>
-                </div>
-                <p className="d-card__label">Hoy</p>
-                <p className="d-card__value d-card__value--dim" style={{ fontSize: '1.9rem' }}>${earnings.today.toFixed(2)}</p>
-              </div>
-
-              <div className="d-card-comp d-card">
-                <div className="d-card__top">
-                  <div className="icon-chip chip--accent"><i className="fa-solid fa-moon"></i></div>
-                  <span className="u-pill u-pill--flat">Día anterior</span>
-                </div>
-                <p className="d-card__label">Ayer</p>
-                <p className="d-card__value d-card__value--accent" style={{ fontSize: '1.9rem' }}>${earnings.yesterday.toFixed(2)}</p>
-              </div>
-
-            </div>
-          </section>
-
-          {/* Semana + Distribution */}
-          <div className="d-grid d-grid-2-1">
-
-            <div className="d-card-comp d-card">
-              <div className="d-card__top">
-                <div>
-                  <p className="d-card__label" style={{ marginBottom: 'var(--sp-2)' }}>Semana</p>
-                  <p className="d-card__value">${earnings.week.toFixed(2)}</p>
-                </div>
-                <div className="icon-chip chip--green"><i className="fa-solid fa-calendar-week"></i></div>
-              </div>
-              <span className="u-pill u-pill--up"><i className="fa-solid fa-arrow-trend-up"></i> Semana en curso</span>
-            </div>
-
-            <div className="d-card-comp d-card">
-              <p className="d-card__label" style={{ marginBottom: 'var(--sp-3)' }}>Distribución</p>
-              <div className="dist-list">
-                <div className="dist-row">
-                  <span className="dist-row__label"><i className="fa-solid fa-handshake" style={{ color: 'var(--clr-amber)' }}></i> Patrocinio</span>
-                  <span className="dist-row__val" style={{ color: 'var(--clr-amber)' }}>${earnings.patrocinio.toFixed(0)}</span>
-                </div>
-                <div className="dist-row">
-                  <span className="dist-row__label"><i className="fa-solid fa-bolt" style={{ color: 'var(--clr-cyan)' }}></i> Directo</span>
-                  <span className="dist-row__val" style={{ color: 'var(--clr-cyan)' }}>${earnings.direct.toFixed(0)}</span>
-                </div>
-                <div className="dist-row">
-                  <span className="dist-row__label"><i className="fa-solid fa-gift" style={{ color: 'var(--clr-pink)' }}></i> B. Extra</span>
-                  <span className="dist-row__val" style={{ color: 'var(--clr-muted)' }}>${earnings.extra.toFixed(0)}</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Network */}
-          <section>
-            <p className="section-label" style={{ marginBottom: 'var(--sp-4)' }}><i className="fa-solid fa-network-wired"></i>Mi Red</p>
-            <div className="d-grid d-grid-3">
-
-              <Link href="/dashboard/network" className="d-card-comp d-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-                <div className="d-card__top">
-                  <div className="icon-chip chip--accent"><i className="fa-solid fa-diagram-project"></i></div>
-                  <span className="u-pill u-pill--accent">Red total</span>
-                </div>
-                <p className="d-card__label">Total usuarios</p>
-                <p className="d-card__value d-card__value--lg">{data.stats.totalNetwork}</p>
-                <p style={{ fontSize: '.76rem', color: 'var(--clr-muted)' }}>usuarios totales</p>
-              </Link>
-
-              <Link href="/dashboard/network" className="d-card-comp d-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-                <div className="d-card__top">
-                  <div className="icon-chip chip--cyan"><i className="fa-solid fa-user-group"></i></div>
-                  <span className="u-pill" style={{ background: 'var(--clr-cyan-bg)', color: 'var(--clr-cyan)' }}>Nivel 1</span>
-                </div>
-                <p className="d-card__label">Directos</p>
-                <p className="d-card__value d-card__value--cyan" style={{ fontSize: '3.2rem' }}>{data.stats.directReferrals}</p>
-                <p style={{ fontSize: '.76rem', color: 'var(--clr-muted)' }}>referidos directos</p>
-              </Link>
-
-              <div className="d-card-comp d-card" style={{ overflowY: 'auto', maxHeight: '220px' }}>
-                <p className="d-card__label" style={{ marginBottom: 'var(--sp-3)' }}>Frontales</p>
-                {data.tree.length === 0
-                  ? <p style={{ fontSize: '.76rem', color: 'var(--clr-muted)', textAlign: 'center', padding: '16px 0' }}>Sin referidos directos aún</p>
-                  : <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      {data.tree.map(m => (
-                        <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '5px 8px', borderRadius: '8px', background: 'rgba(255,255,255,0.03)' }}>
-                          <div style={{ width: 28, height: 28, borderRadius: '50%', background: m.isActive ? 'rgba(210,3,221,0.15)' : 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '.65rem', fontWeight: 700, color: m.isActive ? 'var(--clr-accent-lt)' : 'var(--clr-muted)', flexShrink: 0 }}>
-                            {m.fullName.charAt(0).toUpperCase()}
-                          </div>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <p style={{ fontSize: '.75rem', fontWeight: 600, color: '#fff', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.fullName}</p>
-                            <p style={{ fontSize: '.65rem', color: 'var(--clr-muted)', margin: 0 }}>@{m.username}</p>
-                          </div>
-                          <span style={{ fontSize: '.6rem', padding: '2px 7px', borderRadius: '99px', background: m.isActive ? 'rgba(210,3,221,0.12)' : 'rgba(255,255,255,0.06)', color: m.isActive ? 'var(--clr-accent-lt)' : 'var(--clr-muted)', flexShrink: 0 }}>
-                            {m.isActive ? 'Activo' : 'Inactivo'}
-                          </span>
-                        </div>
-                      ))}
+              {SERVICES.map(s => (
+                <Link key={s.href} href={s.href} className="d-card-comp d-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+                  <div className="d-card__top">
+                    <div className="icon-chip" style={{ background: `${s.color}18`, color: s.color, width: 42, height: 42, fontSize: '1.1rem' }}>
+                      <i className={s.icon}></i>
                     </div>
-                }
-              </div>
-
+                  </div>
+                  <p style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', margin: '8px 0 4px' }}>{s.label}</p>
+                  <p style={{ fontSize: '.78rem', color: 'var(--clr-muted)', margin: 0 }}>{s.desc}</p>
+                </Link>
+              ))}
             </div>
           </section>
 
-          {/* Marketplace */}
-          <section>
-            <p className="section-label" style={{ marginBottom: 'var(--sp-4)' }}><i className="fa-solid fa-store"></i>Marketplace</p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--sp-4)' }}>
-              <Link href="/marketplace" className="d-card-comp d-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-                <div className="d-card__top">
-                  <div className="icon-chip chip--cyan"><i className="fa-solid fa-graduation-cap"></i></div>
-                </div>
-                <p className="d-card__label">Explorar</p>
-                <p style={{ fontSize: '.8rem', color: 'var(--clr-muted)', marginTop: '4px' }}>Marketplace de Cursos</p>
-              </Link>
-              <div className="d-card-comp d-card" style={{ cursor: 'default' }}>
-                <div className="d-card__top">
-                  <div className="icon-chip chip--rose"><i className="fa-solid fa-bag-shopping"></i></div>
-                </div>
-                <p className="d-card__label">Mis Pedidos</p>
-                <p style={{ fontSize: '.8rem', color: 'var(--clr-muted)', marginTop: '4px' }}>Próximamente</p>
-              </div>
-            </div>
-          </section>
         </main>
       </div>
     </>
   )
 }
-
