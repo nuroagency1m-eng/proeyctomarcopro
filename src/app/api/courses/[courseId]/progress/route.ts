@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getUserFromRequest } from '@/lib/auth'
+import { getAuthUser } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
 export async function POST(
   req: NextRequest,
   { params }: { params: { courseId: string } }
 ) {
-  const user = await getUserFromRequest(req)
+  const user = await getAuthUser()
   if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
   const { videoId, percent } = await req.json()
