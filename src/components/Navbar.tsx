@@ -1,30 +1,34 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import NotificationBell from './NotificationBell'
 
-const navItems = [
-  { href: '/dashboard', iconClass: 'fa-solid fa-house', label: 'Inicio' },
-  { href: '/dashboard/services/ads', iconClass: 'fa-solid fa-bullhorn', label: 'Ads' },
-  { href: '/dashboard/services/whatsapp', iconClass: 'fa-brands fa-whatsapp', label: 'WhatsApp' },
-  { href: '/dashboard/services/social', iconClass: 'fa-solid fa-share-nodes', label: 'Social' },
-  { href: '/dashboard/services/sales', iconClass: 'fa-solid fa-chart-line', label: 'Sales' },
-  { href: '/dashboard/services/landing-pages', iconClass: 'fa-solid fa-file', label: 'Landing' },
-  { href: '/dashboard/services/virtual-store', iconClass: 'fa-solid fa-shop', label: 'Tienda' },
-  { href: '/dashboard/services/marketplace', iconClass: 'fa-solid fa-cube', label: 'Market' },
-  { href: '/dashboard/services/clipping', iconClass: 'fa-solid fa-newspaper', label: 'Clipping' },
-  { href: '/dashboard/courses', iconClass: 'fa-solid fa-book-open', label: 'Academy' },
-  { href: '/dashboard/wallet', iconClass: 'fa-solid fa-wallet', label: 'Wallet' },
-  { href: '/dashboard/store', iconClass: 'fa-solid fa-bag-shopping', label: 'Shop' },
+const serviceItems = [
+  { href: '/dashboard/services/ads',           iconClass: 'fa-solid fa-bullhorn',     label: 'Ads' },
+  { href: '/dashboard/services/whatsapp',      iconClass: 'fa-brands fa-whatsapp',    label: 'WhatsApp' },
+  { href: '/dashboard/services/social',        iconClass: 'fa-solid fa-share-nodes',  label: 'Social' },
+  { href: '/dashboard/services/sales',         iconClass: 'fa-solid fa-chart-line',   label: 'Sales' },
+  { href: '/dashboard/services/landing-pages', iconClass: 'fa-solid fa-file',         label: 'Landing' },
+  { href: '/dashboard/services/virtual-store', iconClass: 'fa-solid fa-shop',         label: 'Tienda' },
+  { href: '/dashboard/services/marketplace',   iconClass: 'fa-solid fa-cube',         label: 'Market' },
+  { href: '/dashboard/services/clipping',      iconClass: 'fa-solid fa-newspaper',    label: 'Clipping' },
+]
+
+const mainItems = [
+  { href: '/dashboard',         iconClass: 'fa-solid fa-house',        label: 'Inicio' },
+  { href: '/dashboard/courses', iconClass: 'fa-solid fa-book-open',    label: 'Academy' },
+  { href: '/dashboard/store',   iconClass: 'fa-solid fa-bag-shopping', label: 'Shop' },
+  { href: '/dashboard/wallet',  iconClass: 'fa-solid fa-wallet',       label: 'Wallet' },
 ]
 
 const mobileNavItems = [
-  { href: '/dashboard', iconClass: 'fa-solid fa-house', label: 'Inicio' },
-  { href: '/dashboard/services', iconClass: 'fa-solid fa-th-large', label: 'Servicios' },
-  { href: '/dashboard/courses', iconClass: 'fa-solid fa-book-open', label: 'Academy' },
-  { href: '/dashboard/store', iconClass: 'fa-solid fa-bag-shopping', label: 'Shop' },
-  { href: '/dashboard/wallet', iconClass: 'fa-solid fa-wallet', label: 'Wallet' },
+  { href: '/dashboard',         iconClass: 'fa-solid fa-house',        label: 'Inicio' },
+  { href: '/dashboard/services',iconClass: 'fa-solid fa-th-large',     label: 'Servicios' },
+  { href: '/dashboard/courses', iconClass: 'fa-solid fa-book-open',    label: 'Academy' },
+  { href: '/dashboard/store',   iconClass: 'fa-solid fa-bag-shopping', label: 'Shop' },
+  { href: '/dashboard/wallet',  iconClass: 'fa-solid fa-wallet',       label: 'Wallet' },
 ]
 
 async function logout() {
@@ -34,6 +38,8 @@ async function logout() {
 
 export default function Navbar() {
   const pathname = usePathname()
+  const isInServices = pathname.startsWith('/dashboard/services')
+  const [servicesOpen, setServicesOpen] = useState(isInServices)
 
   return (
     <>
@@ -51,27 +57,59 @@ export default function Navbar() {
         </Link>
 
         <nav className="sidebar__nav" aria-label="Menú">
-          {navItems.map(item => {
+
+          {/* Ítems principales */}
+          {mainItems.map(item => {
             const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`nav-item ${isActive ? 'nav-item--active' : ''}`}
-              >
+              <Link key={item.href} href={item.href} className={`nav-item ${isActive ? 'nav-item--active' : ''}`}>
                 <span className="nav-item__icon"><i className={item.iconClass}></i></span>
                 <span className="nav-item__label">{item.label}</span>
                 <span className="nav-item__dot"></span>
               </Link>
             )
           })}
+
+          {/* Servicios colapsable */}
+          <button
+            onClick={() => setServicesOpen(o => !o)}
+            className={`nav-item ${isInServices ? 'nav-item--active' : ''}`}
+            style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            <span className="nav-item__icon"><i className="fa-solid fa-th-large"></i></span>
+            <span className="nav-item__label">Servicios</span>
+            <i className="fa-solid fa-chevron-down" style={{
+              fontSize: '0.65rem',
+              color: 'rgba(255,255,255,0.35)',
+              marginLeft: 'auto',
+              transition: 'transform 0.2s ease',
+              transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            }}></i>
+          </button>
+
+          {/* Lista de servicios */}
+          {servicesOpen && (
+            <div style={{ paddingLeft: 10 }}>
+              {serviceItems.map(item => {
+                const isActive = pathname === item.href || pathname.startsWith(item.href)
+                return (
+                  <Link key={item.href} href={item.href} className={`nav-item ${isActive ? 'nav-item--active' : ''}`} style={{ fontSize: '0.78rem', padding: '8px 10px' }}>
+                    <span className="nav-item__icon" style={{ width: 26, height: 26, fontSize: '0.72rem' }}><i className={item.iconClass}></i></span>
+                    <span className="nav-item__label">{item.label}</span>
+                    <span className="nav-item__dot"></span>
+                  </Link>
+                )
+              })}
+            </div>
+          )}
+
           <div className="sidebar__nav-sep"></div>
           <Link href="/dashboard/settings" className={`nav-item ${pathname === '/dashboard/settings' ? 'nav-item--active' : ''}`}>
             <span className="nav-item__icon"><i className="fa-solid fa-gear"></i></span>
             <span className="nav-item__label">Configuración</span>
             <span className="nav-item__dot"></span>
           </Link>
-          <button onClick={logout} className="nav-item" style={{ width:'100%', background:'none', border:'none', cursor:'pointer', color:'rgba(255,100,100,0.8)' }}>
+          <button onClick={logout} className="nav-item" style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,100,100,0.8)' }}>
             <span className="nav-item__icon"><i className="fa-solid fa-right-from-bracket"></i></span>
             <span className="nav-item__label">Salir</span>
           </button>
@@ -92,11 +130,7 @@ export default function Navbar() {
         {mobileNavItems.map(item => {
           const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`bnav__item ${isActive ? 'bnav__item--active' : ''}`}
-            >
+            <Link key={item.href} href={item.href} className={`bnav__item ${isActive ? 'bnav__item--active' : ''}`}>
               <i className={item.iconClass}></i>
               {item.label}
             </Link>
@@ -106,4 +140,3 @@ export default function Navbar() {
     </>
   )
 }
-
