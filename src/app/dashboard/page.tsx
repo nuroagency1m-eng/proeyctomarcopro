@@ -27,7 +27,6 @@ const SERVICES = [
   { href: '/dashboard/services/ads',           icon: 'fa-solid fa-bullhorn',     label: 'Ads',            desc: 'Crea y gestiona campañas publicitarias en Meta, Google y TikTok.',  color: '#D203DD' },
   { href: '/dashboard/services/whatsapp',      icon: 'fa-brands fa-whatsapp',    label: 'Agentes de AI',  desc: 'Bots inteligentes que atienden y venden por WhatsApp 24/7.',          color: '#22c55e' },
   { href: '/dashboard/services/social',        icon: 'fa-solid fa-share-nodes',  label: 'Social',         desc: 'Programa y publica contenido en tus redes sociales.',                color: '#e855f0' },
-  { href: '/dashboard/services/sales',         icon: 'fa-solid fa-chart-line',   label: 'Sales',          desc: 'Monitorea tus ventas y métricas de negocio en tiempo real.',         color: '#fbbf24' },
   { href: '/dashboard/services/landing-pages', icon: 'fa-solid fa-file',         label: 'Landing Pages',  desc: 'Diseña páginas de aterrizaje para captar clientes.',                 color: '#a855f7' },
   { href: '/dashboard/services/virtual-store', icon: 'fa-solid fa-shop',         label: 'Tienda Virtual', desc: 'Crea tu propia tienda online y vende tus productos.',                color: '#38bdf8' },
   { href: '/dashboard/services/marketplace',   icon: 'fa-solid fa-cube',         label: 'Marketplace',    desc: 'Publica y vende tus cursos digitales a toda la comunidad.',          color: '#fb7185' },
