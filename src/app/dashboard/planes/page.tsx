@@ -55,11 +55,6 @@ const PACKS = [
         features: ['Hasta 5 anuncios al mes en Meta, TikTok y Google'],
       },
       {
-        icon: BookOpen,
-        title: 'Marketplace de Cursos',
-        features: ['Publica y vende tus propios cursos'],
-      },
-      {
         icon: Play,
         title: 'Clipping',
         features: ['Gana por cada 1,000 vistas de tus clips'],
@@ -128,9 +123,8 @@ const PACKS = [
       },
       {
         icon: BookOpen,
-        title: 'Marketplace & Clipping',
+        title: 'Clipping',
         features: [
-          'Publica y vende tus propios cursos',
           'Gana por cada 1,000 vistas de tus clips',
         ],
       },
@@ -201,9 +195,8 @@ const PACKS = [
       },
       {
         icon: BookOpen,
-        title: 'Marketplace & Clipping',
+        title: 'Clipping',
         features: [
-          'Publica y vende tus propios cursos',
           'Gana por cada 1,000 vistas de tus clips',
         ],
       },

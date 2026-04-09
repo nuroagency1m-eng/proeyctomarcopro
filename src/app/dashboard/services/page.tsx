@@ -67,17 +67,6 @@ const services = [
     tag: 'Gratis',
   },
   {
-    id: 6,
-    title: 'Marketplace de Cursos',
-    description: 'Convierte tu conocimiento en dinero. Publica tu curso, fija tu precio y cobra directamente sin intermediarios.',
-    icon: BookOpen,
-    from: '#00FF88', to: '#D203DD',
-    features: ['Publica y vende tu propio curso', 'Cobro directo sin comisiones', 'Tú controlas quién accede'],
-    link: '/dashboard/services/marketplace',
-    requiredPlan: 'BASIC' as UserPlan,
-    tag: 'Básico+',
-  },
-  {
     id: 7,
     title: 'Publicador Social',
     description: 'Publica en Facebook, Instagram, TikTok y YouTube desde un solo lugar. Genera texto con IA, programa publicaciones y mira tus métricas.',

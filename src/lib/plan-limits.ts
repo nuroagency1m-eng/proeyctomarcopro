@@ -9,7 +9,6 @@ export const PLAN_LIMITS = {
         ads: false,
         adsPerMonth: 0,
         newLaunches: false,
-        marketplace: false,
         clipping: true,
     },
     BASIC: {
@@ -20,7 +19,6 @@ export const PLAN_LIMITS = {
         ads: true,
         adsPerMonth: 5,
         newLaunches: false,
-        marketplace: true,
         clipping: true,
     },
     PRO: {
@@ -31,7 +29,6 @@ export const PLAN_LIMITS = {
         ads: true,
         adsPerMonth: 15,
         newLaunches: false,
-        marketplace: true,
         clipping: true,
     },
     ELITE: {
@@ -42,7 +39,6 @@ export const PLAN_LIMITS = {
         ads: true,
         adsPerMonth: 30,
         newLaunches: true,
-        marketplace: true,
         clipping: true,
     },
 } as const

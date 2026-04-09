@@ -34,7 +34,7 @@ const PACK_INFO: Record<string, {
     border: 'border-cyan-500/30',
     bg: 'bg-cyan-500/8',
     icon: Zap,
-    features: ['1 agente AI de WhatsApp personalizado', 'Catálogo hasta 2 productos', '1 tienda virtual', '1 landing page con IA', 'Anuncios + Marketplace + Clipping'],
+    features: ['1 agente AI de WhatsApp personalizado', 'Catálogo hasta 2 productos', '1 tienda virtual', '1 landing page con IA', 'Anuncios + Clipping'],
   },
   PRO: {
     name: 'Pack Pro',
