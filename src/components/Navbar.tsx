@@ -16,8 +16,11 @@ const serviceItems = [
   { href: '/dashboard/services/clipping',      iconClass: 'fa-solid fa-newspaper',    label: 'Clipping' },
 ]
 
-const mainItems = [
-  { href: '/dashboard',         iconClass: 'fa-solid fa-house',        label: 'Inicio' },
+const mainItemsTop = [
+  { href: '/dashboard', iconClass: 'fa-solid fa-house', label: 'Inicio' },
+]
+
+const mainItemsBottom = [
   { href: '/dashboard/courses', iconClass: 'fa-solid fa-book-open',    label: 'Academy' },
   { href: '/dashboard/store',   iconClass: 'fa-solid fa-bag-shopping', label: 'Shop' },
   { href: '/dashboard/wallet',  iconClass: 'fa-solid fa-wallet',       label: 'Wallet' },
@@ -58,9 +61,9 @@ export default function Navbar() {
 
         <nav className="sidebar__nav" aria-label="Menú">
 
-          {/* Ítems principales */}
-          {mainItems.map(item => {
-            const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))
+          {/* Inicio */}
+          {mainItemsTop.map(item => {
+            const isActive = pathname === item.href
             return (
               <Link key={item.href} href={item.href} className={`nav-item ${isActive ? 'nav-item--active' : ''}`}>
                 <span className="nav-item__icon"><i className={item.iconClass}></i></span>
@@ -102,6 +105,18 @@ export default function Navbar() {
               })}
             </div>
           )}
+
+          {/* Academy / Shop / Wallet */}
+          {mainItemsBottom.map(item => {
+            const isActive = pathname === item.href || pathname.startsWith(item.href)
+            return (
+              <Link key={item.href} href={item.href} className={`nav-item ${isActive ? 'nav-item--active' : ''}`}>
+                <span className="nav-item__icon"><i className={item.iconClass}></i></span>
+                <span className="nav-item__label">{item.label}</span>
+                <span className="nav-item__dot"></span>
+              </Link>
+            )
+          })}
 
           <div className="sidebar__nav-sep"></div>
           <Link href="/dashboard/settings" className={`nav-item ${pathname === '/dashboard/settings' ? 'nav-item--active' : ''}`}>
