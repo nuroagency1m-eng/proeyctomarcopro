@@ -63,9 +63,9 @@ export async function POST(
         description: source.description,
         logoUrl: source.logoUrl,
         bannerUrl: source.bannerUrl,
-        themeConfig: source.themeConfig,
+        themeConfig: source.themeConfig as unknown as any,
         active: false,
-      },
+      } as any,
     })
 
     for (const p of source.products) {

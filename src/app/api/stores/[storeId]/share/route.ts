@@ -116,7 +116,8 @@ export async function POST(
           stock: p.stock,
           images: p.images,
           active: p.active,
-        })),
+          pricePromo: (p as any).pricePromo ?? null,
+        })) as any,
       })
     }
 
