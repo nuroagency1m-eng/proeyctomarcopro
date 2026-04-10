@@ -1746,9 +1746,9 @@ function ProductForm({
             <option value="CUP">$ Peso cubano (CUP)</option>
           </select>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label className={labelClass}>Precio unitario</label>
+            <label className={labelClass}>Precio</label>
             <input
               type="number"
               step="0.01"
@@ -1760,7 +1760,7 @@ function ProductForm({
             />
           </div>
           <div>
-            <label className={labelClass}>Precio promo ×2</label>
+            <label className={labelClass}>Precio de oferta</label>
             <input
               type="number"
               step="0.01"
@@ -1768,18 +1768,6 @@ function ProductForm({
               value={form.pricePromo2}
               onChange={e => setField('pricePromo2', e.target.value)}
               placeholder="45.00"
-              className={inputClass}
-            />
-          </div>
-          <div>
-            <label className={labelClass}>Precio súper ×6</label>
-            <input
-              type="number"
-              step="0.01"
-              min="0"
-              value={form.priceSuper6}
-              onChange={e => setField('priceSuper6', e.target.value)}
-              placeholder="120.00"
               className={inputClass}
             />
           </div>
