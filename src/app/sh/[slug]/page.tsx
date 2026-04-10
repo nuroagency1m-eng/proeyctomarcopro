@@ -29,6 +29,7 @@ export default async function PublicStorePage({ params }: PublicStorePageProps) 
     const products = (store.products || []).map((p: any) => ({
         ...p,
         price: Number(p.price),
+        pricePromo: p.pricePromo ? Number(p.pricePromo) : null,
         points: Number(p.points ?? 0),
     })) as any[]
 

@@ -39,6 +39,7 @@ export async function PATCH(
                 description: body.description,
                 category: body.category,
                 price: body.price !== undefined ? Number(body.price) : undefined,
+                pricePromo: body.pricePromo !== undefined ? (body.pricePromo !== '' && body.pricePromo !== null ? Number(body.pricePromo) : null) : undefined,
                 currency: body.currency,
                 points: body.points !== undefined ? Number(body.points) : undefined,
                 stock: body.stock !== undefined ? Number(body.stock) : undefined,

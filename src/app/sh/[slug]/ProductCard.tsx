@@ -17,11 +17,13 @@ export function ProductCard({ p, whatsappPhone, isMLM }: any) {
     const [added, setAdded] = useState(false)
     const { addToCart } = useCart()
 
+    const effectivePrice = p.pricePromo ? Number(p.pricePromo) : Number(p.price)
+
     const handleAddToCart = () => {
         addToCart({
             id: p.id,
             name: p.name,
-            price: Number(p.price),
+            price: effectivePrice,
             currency: p.currency,
             quantity,
             points: Number(p.points || 0),
@@ -118,15 +120,27 @@ export function ProductCard({ p, whatsappPhone, isMLM }: any) {
                     </div>
 
                     {/* Price */}
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
-                        <span style={{ fontSize: 'clamp(12px, 3vw, 18px)', fontWeight: 800, color: GREEN, lineHeight: 1 }}>
-                            {currencySymbol(p.currency)}{Number(p.price * quantity).toLocaleString()}
-                        </span>
-                        {isMLM && p.points > 0 && (
-                            <span className="hidden sm:flex" style={{ fontSize: 9, fontWeight: 600, color: `${CYAN}90`, alignItems: 'center', gap: 3 }}>
-                                <Star size={8} fill="currentColor" /> +{p.points * quantity}PV
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        {p.pricePromo && (
+                            <span style={{ fontSize: 'clamp(9px, 2vw, 11px)', color: 'rgba(255,255,255,0.35)', textDecoration: 'line-through', lineHeight: 1 }}>
+                                {currencySymbol(p.currency)}{Number(p.price * quantity).toLocaleString()}
                             </span>
                         )}
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                            <span style={{ fontSize: 'clamp(12px, 3vw, 18px)', fontWeight: 800, color: p.pricePromo ? '#FF8C42' : GREEN, lineHeight: 1 }}>
+                                {currencySymbol(p.currency)}{Number(effectivePrice * quantity).toLocaleString()}
+                            </span>
+                            {p.pricePromo && (
+                                <span style={{ fontSize: 8, fontWeight: 700, color: '#FF8C42', background: 'rgba(255,140,66,0.15)', border: '1px solid rgba(255,140,66,0.3)', borderRadius: 99, padding: '1px 5px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                                    OFERTA
+                                </span>
+                            )}
+                            {isMLM && p.points > 0 && (
+                                <span className="hidden sm:flex" style={{ fontSize: 9, fontWeight: 600, color: `${CYAN}90`, alignItems: 'center', gap: 3 }}>
+                                    <Star size={8} fill="currentColor" /> +{p.points * quantity}PV
+                                </span>
+                            )}
+                        </div>
                     </div>
 
                     {/* Add button */}

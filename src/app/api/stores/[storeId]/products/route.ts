@@ -54,7 +54,7 @@ export async function POST(
 
         const { storeId } = params
         const body = await request.json()
-        const { name, description, price, stock, images, active, category, points, currency } = body
+        const { name, description, price, pricePromo, stock, images, active, category, points, currency } = body
 
         if (!name || price === undefined) {
             return NextResponse.json({ error: 'Faltan campos obligatorios' }, { status: 400 })
@@ -76,6 +76,7 @@ export async function POST(
                 description: description || '',
                 category: category || 'General',
                 price: Number(price),
+                pricePromo: pricePromo !== undefined && pricePromo !== '' ? Number(pricePromo) : null,
                 currency: currency || 'USD',
                 points: points !== undefined ? Number(points) : 0,
                 stock: Number(stock) || 0,

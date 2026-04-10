@@ -30,6 +30,7 @@ interface Product {
     description: string | null
     category: string | null
     price: number
+    pricePromo: number | null
     currency: string
     points: number | null
     stock: number
@@ -155,6 +156,7 @@ export default function VirtualStorePage() {
     // Product Form
     const [prodName, setProdName] = useState('')
     const [prodPrice, setProdPrice] = useState('')
+    const [prodPromo, setProdPromo] = useState('')
     const [prodCurrency, setProdCurrency] = useState('USD')
     const [prodPoints, setProdPoints] = useState('0')
     const [prodCategory, setProdCategory] = useState('General')
@@ -277,6 +279,7 @@ export default function VirtualStorePage() {
                 body: JSON.stringify({
                     name: prodName,
                     price: prodPrice,
+                    pricePromo: prodPromo || null,
                     currency: prodCurrency,
                     points: prodPoints,
                     category: prodCategory,
@@ -302,6 +305,7 @@ export default function VirtualStorePage() {
         setEditProduct(null)
         setProdName('')
         setProdPrice('')
+        setProdPromo('')
         setProdCurrency('USD')
         setProdPoints('0')
         setProdCategory('General')
@@ -401,7 +405,16 @@ export default function VirtualStorePage() {
                                 <div className="p-2 sm:p-5">
                                     <div className="flex items-start justify-between mb-1 sm:mb-2 gap-1">
                                         <h3 className="font-bold text-[10px] sm:text-lg leading-tight">{p.name}</h3>
-                                        <span className="text-neon-green font-black text-[10px] sm:text-base shrink-0">${p.price}</span>
+                                        <div className="flex flex-col items-end shrink-0">
+                                            {p.pricePromo ? (
+                                                <>
+                                                    <span className="text-[9px] sm:text-xs text-dark-400 line-through">{p.currency === 'USD' ? '$' : p.currency + ' '}{p.price}</span>
+                                                    <span className="text-orange-400 font-black text-[10px] sm:text-base">{p.currency === 'USD' ? '$' : p.currency + ' '}{p.pricePromo}</span>
+                                                </>
+                                            ) : (
+                                                <span className="text-neon-green font-black text-[10px] sm:text-base">{p.currency === 'USD' ? '$' : p.currency + ' '}{p.price}</span>
+                                            )}
+                                        </div>
                                     </div>
                                     <p className="text-dark-400 text-[9px] sm:text-xs mb-2 sm:mb-6 line-clamp-2 hidden sm:block">{p.description || 'Sin descripción'}</p>
                                     <div className="flex items-center gap-2">
@@ -410,6 +423,7 @@ export default function VirtualStorePage() {
                                                 setEditProduct(p);
                                                 setProdName(p.name);
                                                 setProdPrice(p.price.toString());
+                                                setProdPromo(p.pricePromo ? p.pricePromo.toString() : '');
                                                 setProdCurrency(p.currency || 'USD');
                                                 setProdPoints(p.points?.toString() || '0');
                                                 setProdCategory(p.category || 'General');
@@ -516,29 +530,37 @@ export default function VirtualStorePage() {
                                             )}
                                     </div>
                                 </div>
-                                <div className="flex flex-col sm:flex-row gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold text-dark-400 uppercase tracking-widest block">Moneda</label>
+                                    <select
+                                        value={prodCurrency}
+                                        onChange={e => setProdCurrency(e.target.value)}
+                                        className="w-full bg-dark-900 border border-purple-500/25 rounded-xl px-4 py-3 text-sm text-white focus:border-neon-blue outline-none transition-all"
+                                    >
+                                        <option value="USD">USD ($)</option>
+                                        <option value="PEN">PEN (S/)</option>
+                                        <option value="COP">COP ($)</option>
+                                        <option value="MXN">MXN ($)</option>
+                                        <option value="ARS">ARS ($)</option>
+                                        <option value="CLP">CLP ($)</option>
+                                        <option value="BOB">BOB (Bs)</option>
+                                        <option value="VES">VES (Bs.S)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                    </select>
+                                </div>
+                                <div className="flex flex-col sm:flex-row gap-4">
                                     <div className="flex-1 space-y-2">
-                                        <label className="text-xs font-bold text-dark-400 uppercase tracking-widest block">Precio</label>
-                                        <div className="flex gap-2">
-                                            <select
-                                                value={prodCurrency}
-                                                onChange={e => setProdCurrency(e.target.value)}
-                                                className="w-24 bg-dark-900 border border-purple-500/25 rounded-xl px-2 py-3 text-xs text-white focus:border-neon-blue outline-none transition-all"
-                                            >
-                                                <option value="USD">USD ($)</option>
-                                                <option value="PEN">PEN (S/)</option>
-                                                <option value="COP">COP ($)</option>
-                                                <option value="MXN">MXN ($)</option>
-                                                <option value="ARS">ARS ($)</option>
-                                                <option value="CLP">CLP ($)</option>
-                                                <option value="BOB">BOB (Bs)</option>
-                                                <option value="VES">VES (Bs.S)</option>
-                                                <option value="EUR">EUR (€)</option>
-                                            </select>
-                                            <input required type="number" step="0.01" value={prodPrice} onChange={e => setProdPrice(e.target.value)} className="flex-1 bg-dark-900 border border-purple-500/25 rounded-xl px-4 py-3 focus:border-neon-blue outline-none transition-all" />
-                                        </div>
+                                        <label className="text-xs font-bold text-dark-400 uppercase tracking-widest block">Precio Normal</label>
+                                        <input required type="number" step="0.01" placeholder="0.00" value={prodPrice} onChange={e => setProdPrice(e.target.value)} className="w-full bg-dark-900 border border-purple-500/25 rounded-xl px-4 py-3 focus:border-neon-blue outline-none transition-all" />
                                     </div>
-                                    <div className="w-full sm:w-32 space-y-2">
+                                    <div className="flex-1 space-y-2">
+                                        <label className="text-xs font-bold text-orange-400/70 uppercase tracking-widest block flex items-center gap-1.5">
+                                            <span className="text-[9px] px-1.5 py-0.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400">OFERTA</span>
+                                            Precio Promoción
+                                        </label>
+                                        <input type="number" step="0.01" placeholder="Opcional" value={prodPromo} onChange={e => setProdPromo(e.target.value)} className="w-full bg-dark-900 border border-orange-500/20 rounded-xl px-4 py-3 text-orange-300 placeholder-dark-500 focus:border-orange-400 outline-none transition-all" />
+                                    </div>
+                                    <div className="w-full sm:w-28 space-y-2">
                                         <label className="text-xs font-bold text-dark-400 uppercase tracking-widest block">Stock</label>
                                         <input required type="number" value={prodStock} onChange={e => setProdStock(e.target.value)} className="w-full bg-dark-900 border border-purple-500/25 rounded-xl px-4 py-3 text-white placeholder-dark-500 focus:border-neon-blue outline-none transition-all" />
                                     </div>
