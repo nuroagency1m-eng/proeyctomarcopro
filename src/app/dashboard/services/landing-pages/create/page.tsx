@@ -319,7 +319,7 @@ export default function CreateLandingPage() {
 
     // ─── Loading screen ──────────────────────────────────────────────────────
     if (loading) return (
-        <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center px-4">
+        <div className="min-h-screen bg-[#1C192C] flex flex-col items-center justify-center px-4">
             <div className="w-20 h-20 rounded-full border-4 border-[#00FF88]/20 border-t-[#00FF88] animate-spin mb-8" />
             <p className="text-[#00FF88] font-black text-lg tracking-widest uppercase text-center">{LOADING_MSGS[loadingIdx]}</p>
             <p className="text-white/30 text-sm mt-3">Esto puede tardar 30-60 segundos</p>
@@ -328,8 +328,8 @@ export default function CreateLandingPage() {
 
     // ─── Mode selector ────────────────────────────────────────────────────────
     if (mode === 'select') return (
-        <div className="min-h-screen bg-[#050505] text-white flex flex-col">
-            <nav className="h-16 border-b border-white/5 flex items-center px-4 sm:px-8 bg-black/50 backdrop-blur-xl fixed top-0 w-full z-50">
+        <div className="min-h-screen bg-[#1C192C] text-white flex flex-col">
+            <nav className="h-16 border-b border-white/5 flex items-center px-4 sm:px-8 bg-[#1C192C]/90 backdrop-blur-xl fixed top-0 left-0 w-full z-50 lg:left-[240px] lg:w-[calc(100%-240px)]">
                 <Link href="/dashboard/services/landing-pages" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </Link>
@@ -375,9 +375,9 @@ export default function CreateLandingPage() {
     )
 
     if (mode === 'html') return (
-        <div className="min-h-screen bg-[#050505] flex flex-col">
+        <div className="min-h-screen bg-[#1C192C] flex flex-col">
             {/* Top bar — title + back only (no save button, avoids clash with dashboard Navbar) */}
-            <div className="h-12 border-b border-white/5 flex items-center gap-3 px-4 sm:px-8 bg-[#050505]/90 backdrop-blur-xl sticky top-0 z-40">
+            <div className="h-12 border-b border-white/5 flex items-center gap-3 px-4 sm:px-8 bg-[#1C192C]/90 backdrop-blur-xl sticky top-0 z-40">
                 <button onClick={() => setMode('select')} className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={15} />
                 </button>
@@ -385,7 +385,7 @@ export default function CreateLandingPage() {
             </div>
 
             {/* Name + slug bar */}
-            <div className="px-4 sm:px-8 py-3 border-b border-white/5 bg-[#050505] flex items-center gap-3">
+            <div className="px-4 sm:px-8 py-3 border-b border-white/5 bg-[#1C192C] flex items-center gap-3">
                 <input
                     type="text"
                     value={form.name}
@@ -402,14 +402,14 @@ export default function CreateLandingPage() {
             <textarea
                 value={htmlCode}
                 onChange={e => setHtmlCode(e.target.value)}
-                className="flex-1 bg-[#0A0A0F] text-[#00FF88] font-mono text-sm p-6 outline-none resize-none border-none"
+                className="flex-1 bg-[#0D0B1A] text-[#00FF88] font-mono text-sm p-6 outline-none resize-none border-none"
                 placeholder="<!-- Pega aquí tu código HTML completo -->"
                 spellCheck={false}
                 style={{ minHeight: 'calc(100vh - 200px)' }}
             />
 
             {/* Bottom save bar — always visible */}
-            <div className="fixed bottom-[65px] left-0 w-full bg-black/90 backdrop-blur-xl border-t border-white/8 px-4 sm:px-8 py-4 flex items-center justify-between z-50 lg:bottom-0 lg:left-[240px]">
+            <div className="fixed bottom-[65px] left-0 w-full bg-[#1C192C]/95 backdrop-blur-xl border-t border-white/10 px-4 sm:px-8 py-4 flex items-center justify-between z-50 lg:bottom-0 lg:left-[240px] lg:w-[calc(100%-240px)]">
                 <div>
                     <p className="text-xs font-bold text-white/50">Pegar HTML</p>
                     <p className="text-[10px] text-white/25">{form.name || 'Sin nombre aún'}</p>
@@ -715,9 +715,9 @@ export default function CreateLandingPage() {
 
     // ─── Layout ───────────────────────────────────────────────────────────────
     return (
-        <div className="min-h-screen bg-[#050505] text-white">
+        <div className="min-h-screen bg-[#1C192C] text-white">
             {/* Top Nav */}
-            <nav className="h-16 border-b border-white/5 flex items-center justify-between px-4 sm:px-8 bg-black/50 backdrop-blur-xl fixed top-0 w-full z-50">
+            <nav className="h-16 border-b border-white/5 flex items-center justify-between px-4 sm:px-8 bg-[#1C192C]/90 backdrop-blur-xl fixed top-0 left-0 w-full z-50 lg:left-[240px] lg:w-[calc(100%-240px)]">
                 <div className="flex items-center gap-3">
                     <button onClick={() => setMode('select')} className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
                         <ArrowLeft size={16} />
@@ -737,7 +737,7 @@ export default function CreateLandingPage() {
             </nav>
 
             {/* Step indicator — desktop */}
-            <div className="fixed top-16 left-0 w-full z-40 bg-[#050505]/90 backdrop-blur-xl border-b border-white/5 hidden sm:flex items-center justify-center py-4 px-8 gap-2">
+            <div className="fixed top-16 left-0 w-full z-40 bg-[#1C192C]/90 backdrop-blur-xl border-b border-white/5 hidden sm:flex items-center justify-center py-4 px-8 gap-2 lg:left-[240px] lg:w-[calc(100%-240px)]">
                 {STEPS.map((s, i) => (
                     <div key={s.id} className="flex items-center gap-2">
                         <button type="button" onClick={() => s.id < step && setStep(s.id)} className={`flex items-center gap-2 transition-all ${s.id === step ? 'text-white' : s.id < step ? 'text-[#00FF88]/70 hover:text-[#00FF88]' : 'text-white/20'}`}>
@@ -759,7 +759,7 @@ export default function CreateLandingPage() {
             </main>
 
             {/* Bottom Nav */}
-            <div className="fixed bottom-[65px] left-0 w-full bg-black/80 backdrop-blur-xl border-t border-white/5 px-4 sm:px-8 py-4 flex items-center justify-between z-50 lg:bottom-0 lg:left-[240px]">
+            <div className="fixed bottom-[65px] left-0 w-full bg-[#1C192C]/90 backdrop-blur-xl border-t border-white/5 px-4 sm:px-8 py-4 flex items-center justify-between z-50 lg:bottom-0 lg:left-[240px] lg:w-[calc(100%-240px)]">
                 <button
                     type="button"
                     onClick={() => setStep(s => s - 1)}
