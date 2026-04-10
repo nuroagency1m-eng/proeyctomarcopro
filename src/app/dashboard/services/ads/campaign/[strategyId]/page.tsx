@@ -653,7 +653,7 @@ function CampaignPageInner() {
                 SECCIÓN 1 — CONFIGURACIÓN
             ══════════════════════════════════════════════ */}
             <div className={`mb-4 rounded-3xl border transition-all overflow-hidden ${configSaved ? 'border-green-500/20' : 'border-purple-500/20'}`}
-                style={{ background: configSaved ? 'rgba(16,185,129,0.06)' : 'rgba(13,30,121,0.4)' }}>
+                style={{ background: configSaved ? 'rgba(16,185,129,0.06)' : 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)' }}>
 
                 {/* Section header */}
                 <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-white/5">
@@ -989,7 +989,7 @@ function CampaignPageInner() {
                     {/* Save button */}
                     <button onClick={saveConfig} disabled={savingConfig || !form.providerAccountId || !form.name.trim()}
                         className="w-full flex items-center justify-center gap-2 font-bold py-3.5 rounded-2xl disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                        style={{ background: 'linear-gradient(135deg,#D203DD,#2563eb)', boxShadow: '0 0 24px rgba(210,3,221,0.3)' }}>
+                        style={{ background: 'linear-gradient(135deg,#D203DD,#2563eb)', boxShadow: '0 0 24px rgba(255,255,255,0.15)' }}>
                         {savingConfig
                             ? <><Loader2 size={15} className="animate-spin" /> Guardando...</>
                             : configSaved
@@ -1035,7 +1035,7 @@ function CampaignPageInner() {
                                 {!showBulkPanel ? (
                                     <button onClick={() => setShowBulkPanel(true)}
                                         className="w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl font-bold text-sm transition-all border"
-                                        style={{ background: 'linear-gradient(135deg,rgba(210,3,221,0.15),rgba(37,99,235,0.08))', border: '1px solid rgba(210,3,221,0.25)', color: '#c4b5fd', boxShadow: '0 0 30px rgba(210,3,221,0.1)' }}>
+                                        style={{ background: 'linear-gradient(135deg,rgba(255,255,255,0.15),rgba(37,99,235,0.08))', border: '1px solid rgba(255,255,255,0.15)', color: '#c4b5fd', boxShadow: '0 0 30px rgba(210,3,221,0.1)' }}>
                                         <Sparkles size={16} className="text-purple-400" />
                                         ✨ Generar todas las imágenes con IA
                                         <span className="text-[11px] font-normal text-purple-400/60">({strategy.mediaCount} imágenes)</span>
@@ -1129,7 +1129,7 @@ function CampaignPageInner() {
 
                                         <button onClick={generateAllImages} disabled={bulkGenerating}
                                             className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                                            style={{ background: 'linear-gradient(135deg,#D203DD,#2563eb)', boxShadow: '0 0 20px rgba(210,3,221,0.3)' }}>
+                                            style={{ background: 'linear-gradient(135deg,#D203DD,#2563eb)', boxShadow: '0 0 20px rgba(255,255,255,0.15)' }}>
                                             {bulkGenerating
                                                 ? <><Loader2 size={15} className="animate-spin" /> Generando...</>
                                                 : <><Sparkles size={15} /> Generar {strategy.mediaCount} imágenes</>
@@ -1460,7 +1460,7 @@ function CampaignPageInner() {
                         {configSaved && (
                             <button onClick={generateCopies} disabled={generatingCopies}
                                 className="w-full flex items-center justify-center gap-2 font-bold py-3.5 rounded-2xl disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                                style={{ background: copiesGenerated ? 'rgba(139,92,246,0.12)' : 'linear-gradient(135deg,#D203DD,#2563eb)', border: copiesGenerated ? '1px solid rgba(139,92,246,0.25)' : 'none', color: copiesGenerated ? '#c4b5fd' : '#fff', boxShadow: copiesGenerated ? 'none' : '0 0 24px rgba(210,3,221,0.25)' }}>
+                                style={{ background: copiesGenerated ? 'rgba(139,92,246,0.12)' : 'linear-gradient(135deg,#D203DD,#2563eb)', border: copiesGenerated ? '1px solid rgba(139,92,246,0.25)' : 'none', color: copiesGenerated ? '#c4b5fd' : '#fff', boxShadow: copiesGenerated ? 'none' : '0 0 24px rgba(255,255,255,0.15)' }}>
                                 {generatingCopies
                                     ? <><Loader2 size={15} className="animate-spin" /> Generando textos con IA...</>
                                     : copiesGenerated

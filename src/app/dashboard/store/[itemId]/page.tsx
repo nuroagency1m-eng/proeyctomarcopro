@@ -104,7 +104,7 @@ export default function StoreItemPage({ params }: { params: { itemId: string } }
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 28 }} className="sm:grid-cols-2">
         {/* Images */}
         <div>
-          <div style={{ aspectRatio: '1/1', borderRadius: 16, overflow: 'hidden', background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.25)', position: 'relative' }}>
+          <div style={{ aspectRatio: '1/1', borderRadius: 16, overflow: 'hidden', background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)', position: 'relative' }}>
             {images.length > 0 ? (
               <img src={images[activeImg]} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
@@ -188,7 +188,7 @@ export default function StoreItemPage({ params }: { params: { itemId: string } }
               {outOfStock ? 'No disponible' : '🛒 Agregar al carrito'}
             </button>
             <Link href="/dashboard/store/cart"
-              style={{ flex: 1, minWidth: 120, padding: '12px 20px', borderRadius: 10, fontWeight: 700, fontSize: 14, textAlign: 'center', textDecoration: 'none', border: '1px solid rgba(210,3,221,0.3)', color: '#D203DD', background: 'rgba(210,3,221,0.06)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              style={{ flex: 1, minWidth: 120, padding: '12px 20px', borderRadius: 10, fontWeight: 700, fontSize: 14, textAlign: 'center', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)', color: '#D203DD', background: 'rgba(210,3,221,0.06)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
               Ver carrito
             </Link>
           </div>

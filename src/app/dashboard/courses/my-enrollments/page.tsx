@@ -73,7 +73,7 @@ export default function MyEnrollmentsPage() {
       {!loading && enrollments.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 text-center">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-            style={{ background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(210,3,221,0.15)' }}>
+            style={{ background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}>
             <svg className="w-7 h-7 opacity-50" viewBox="0 0 24 24" fill="none" stroke="#D203DD" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
@@ -81,7 +81,7 @@ export default function MyEnrollmentsPage() {
           <p className="text-sm" style={{ color: 'rgba(255,255,255,0.35)' }}>No te has inscrito en ningún curso aún.</p>
           <Link href="/dashboard/courses"
             className="mt-4 text-xs font-semibold"
-            style={{ color: '#D203DD', textDecoration: 'none', border: '1px solid rgba(210,3,221,0.25)', borderRadius: 8, padding: '7px 16px', display: 'inline-block' }}>
+            style={{ color: '#D203DD', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, padding: '7px 16px', display: 'inline-block' }}>
             Ver catálogo de cursos
           </Link>
         </div>
@@ -95,7 +95,7 @@ export default function MyEnrollmentsPage() {
             const course = e.course
             return (
               <div key={e.id}
-                style={{ background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.25)', borderRadius: 14, overflow: 'hidden' }}>
+                style={{ background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 14, overflow: 'hidden' }}>
 
                 <div style={{ display: 'flex', gap: 14, padding: 16 }}>
                   {/* Cover */}
@@ -103,7 +103,7 @@ export default function MyEnrollmentsPage() {
                     <img src={course.coverUrl} alt={course.title}
                       style={{ width: 76, height: 76, objectFit: 'cover', borderRadius: 10, flexShrink: 0 }} />
                   ) : (
-                    <div style={{ width: 76, height: 76, borderRadius: 10, flexShrink: 0, background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(210,3,221,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 76, height: 76, borderRadius: 10, flexShrink: 0, background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <svg style={{ width: 28, height: 28, opacity: 0.3 }} viewBox="0 0 24 24" fill="none" stroke="#D203DD" strokeWidth="1.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814" />
                       </svg>

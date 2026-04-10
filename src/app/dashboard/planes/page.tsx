@@ -294,13 +294,13 @@ export default function PlanesPage() {
           style={{
             background: isFaseGlobal
               ? 'linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,200,100,0.03))'
-              : 'linear-gradient(135deg, rgba(210,3,221,0.06), rgba(123,0,255,0.04))',
-            borderColor: isFaseGlobal ? 'rgba(0,255,136,0.2)' : 'rgba(210,3,221,0.15)',
+              : 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)',
+            borderColor: isFaseGlobal ? 'rgba(0,255,136,0.2)' : 'rgba(255,255,255,0.15)',
           }}>
           <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
             style={{
               background: isFaseGlobal ? 'rgba(0,255,136,0.08)' : 'rgba(210,3,221,0.08)',
-              border: isFaseGlobal ? '1px solid rgba(0,255,136,0.2)' : '1px solid rgba(210,3,221,0.2)',
+              border: isFaseGlobal ? '1px solid rgba(0,255,136,0.2)' : '1px solid rgba(255,255,255,0.15)',
             }}>
             {isFaseGlobal ? <span className="text-lg">🌐</span> : <Timer size={18} style={{ color: '#D203DD' }} />}
           </div>

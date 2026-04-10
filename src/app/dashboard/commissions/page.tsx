@@ -69,7 +69,7 @@ function CommissionsContent() {
       </div>
 
       {/* Línea decorativa */}
-      <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, rgba(0,255,136,0.3), rgba(210,3,221,0.2), transparent)' }} />
+      <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, rgba(0,255,136,0.3), rgba(255,255,255,0.15), transparent)' }} />
 
       {/* Cards resumen */}
       <div className="grid md:grid-cols-3 gap-4">
@@ -101,13 +101,13 @@ function CommissionsContent() {
         <div className="relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:scale-[1.02]"
           style={{
             background: 'linear-gradient(135deg, rgba(210,3,221,0.07), rgba(0,102,255,0.04))',
-            border: '1px solid rgba(210,3,221,0.15)',
+            border: '1px solid rgba(255,255,255,0.15)',
           }}>
           <div className="absolute top-0 left-0 right-0 h-px"
             style={{ background: 'linear-gradient(90deg, transparent, #D203DD50, transparent)' }} />
           <div className="flex items-center gap-3 mb-4">
             <div className="w-9 h-9 rounded-lg flex items-center justify-center"
-              style={{ background: 'rgba(210,3,221,0.1)', border: '1px solid rgba(210,3,221,0.2)' }}>
+              style={{ background: 'rgba(210,3,221,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <Gift className="w-4 h-4" style={{ color: '#D203DD' }} />
             </div>
             <span className="text-xs font-light" style={{ color: 'rgba(255,255,255,0.5)' }}>Bono de Patrocinio</span>
@@ -138,7 +138,7 @@ function CommissionsContent() {
 
       {/* Historial */}
       <div className="relative rounded-2xl overflow-hidden"
-        style={{ border: '1px solid rgba(210,3,221,0.2)', background: 'rgba(13,30,121,0.4)' }}>
+        style={{ border: '1px solid rgba(255,255,255,0.15)', background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)' }}>
         <div className="absolute top-0 left-0 right-0 h-px"
           style={{ background: 'linear-gradient(90deg, transparent, #00FF8840, #D203DD30, transparent)' }} />
 
@@ -151,7 +151,7 @@ function CommissionsContent() {
         {commissions.length === 0 ? (
           <div className="p-12 text-center">
             <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ background: 'rgba(13,30,121,0.5)', border: '1px solid rgba(210,3,221,0.15)' }}>
+              style={{ background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <Wallet className="w-7 h-7" style={{ color: 'rgba(255,255,255,0.15)' }} />
             </div>
             <p className="text-sm font-light" style={{ color: 'rgba(255,255,255,0.25)' }}>

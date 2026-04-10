@@ -344,7 +344,7 @@ export default function CreateLandingPage() {
                     {/* Opción 1: Pegar HTML */}
                     <button
                         onClick={() => setMode('html')}
-                        className="group bg-white/[0.03] border border-white/10 hover:border-[#D203DD]/50 rounded-3xl p-8 text-left transition-all hover:bg-[#D203DD]/5 hover:shadow-[0_0_40px_rgba(210,3,221,0.08)]"
+                        className="group bg-white/[0.03] border border-white/10 hover:border-white/30 rounded-3xl p-8 text-left transition-all hover:bg-white/5 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
                     >
                         <div className="w-12 h-12 rounded-2xl bg-[#D203DD]/10 border border-[#D203DD]/20 flex items-center justify-center mb-5 group-hover:bg-[#D203DD]/20 transition-colors">
                             <Code size={22} className="text-[#D203DD]" />

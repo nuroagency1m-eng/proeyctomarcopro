@@ -58,7 +58,7 @@ export default function PodcastDetailPage() {
       </Link>
 
       {/* Player */}
-      <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(210,3,221,0.2)', marginBottom: 20 }}>
+      <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.15)', marginBottom: 20 }}>
         <div style={{ background: 'rgba(210,3,221,0.08)', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
           <i className="fa-solid fa-microphone" style={{ fontSize: 14, color: '#D203DD' }} />
           <p style={{ fontSize: 14, fontWeight: 700, color: '#fff', margin: 0 }}>{podcast.title}</p>
@@ -76,7 +76,7 @@ export default function PodcastDetailPage() {
 
       {/* Info */}
       {podcast.description && (
-        <div style={{ padding: '16px', borderRadius: 12, background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.2)' }}>
+        <div style={{ padding: '16px', borderRadius: 12, background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)' }}>
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, margin: 0 }}>{podcast.description}</p>
         </div>
       )}

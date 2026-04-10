@@ -116,7 +116,7 @@ export default function StorePage() {
           <p className="text-xs text-white/30 mt-2">Productos exclusivos de MY DIAMOND.</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Link href="/dashboard/store/my-orders" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#D203DD', background: 'rgba(210,3,221,0.07)', border: '1px solid rgba(210,3,221,0.2)', borderRadius: 8, padding: '7px 14px', textDecoration: 'none' }}>
+          <Link href="/dashboard/store/my-orders" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#D203DD', background: 'rgba(210,3,221,0.07)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, padding: '7px 14px', textDecoration: 'none' }}>
             📦 Mis pedidos
           </Link>
           <Link href="/dashboard/store/cart" style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#fff', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '7px 14px', textDecoration: 'none' }}>
@@ -162,7 +162,7 @@ export default function StorePage() {
             const img = Array.isArray(item.images) && item.images.length > 0 ? item.images[0] : null
             const outOfStock = item.stock === 0
             return (
-              <div key={item.id} style={{ borderRadius: 14, overflow: 'hidden', background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.25)', opacity: outOfStock ? 0.6 : 1, transition: 'border-color 0.2s', display: 'flex', flexDirection: 'column' }}>
+              <div key={item.id} style={{ borderRadius: 14, overflow: 'hidden', background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)', opacity: outOfStock ? 0.6 : 1, transition: 'border-color 0.2s', display: 'flex', flexDirection: 'column' }}>
                 {/* Image — click goes to detail */}
                 <Link href={`/dashboard/store/${item.id}`} style={{ textDecoration: 'none', display: 'block' }}>
                   <div style={{ aspectRatio: '1/1', background: 'rgba(210,3,221,0.04)', position: 'relative', overflow: 'hidden' }}>

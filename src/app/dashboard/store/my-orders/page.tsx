@@ -66,7 +66,7 @@ export default function MyOrdersPage() {
         <div className="flex flex-col items-center justify-center py-20 text-center">
           <div style={{ fontSize: 40, marginBottom: 12 }}>📦</div>
           <p className="text-sm" style={{ color: 'rgba(255,255,255,0.35)', marginBottom: 16 }}>No tienes pedidos aún.</p>
-          <Link href="/dashboard/store" style={{ color: '#D203DD', fontSize: 13, textDecoration: 'none', border: '1px solid rgba(210,3,221,0.25)', borderRadius: 8, padding: '7px 16px' }}>
+          <Link href="/dashboard/store" style={{ color: '#D203DD', fontSize: 13, textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, padding: '7px 16px' }}>
             Ir a la tienda
           </Link>
         </div>
@@ -77,9 +77,9 @@ export default function MyOrdersPage() {
           {orders.map(order => {
             const st = STATUS[order.status] ?? STATUS['PENDING']
             return (
-              <div key={order.id} style={{ background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)', border: '1px solid rgba(210,3,221,0.25)', borderRadius: 16, overflow: 'hidden' }}>
+              <div key={order.id} style={{ background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 16, overflow: 'hidden' }}>
                 {/* Header */}
-                <div style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, borderBottom: '1px solid rgba(210,3,221,0.15)' }}>
+                <div style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
                   <div>
                     <p style={{ fontSize: 12, fontWeight: 700, color: '#fff', letterSpacing: '0.05em' }}>#{order.id.slice(0, 8).toUpperCase()}</p>
                     <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', marginTop: 2 }}>

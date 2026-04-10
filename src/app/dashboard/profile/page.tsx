@@ -33,7 +33,7 @@ export default function ProfilePage() {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
         <div className="w-10 h-10 border-2 rounded-full animate-spin"
-          style={{ borderColor: 'rgba(210,3,221,0.2)', borderTopColor: '#D203DD' }} />
+          style={{ borderColor: 'rgba(255,255,255,0.15)', borderTopColor: '#D203DD' }} />
       </div>
     )
   }
@@ -53,7 +53,7 @@ export default function ProfilePage() {
       {/* Header */}
       <div className="flex items-center gap-4 mb-2">
         <div className="w-11 h-11 rounded-xl flex items-center justify-center"
-          style={{ background: 'rgba(210,3,221,0.08)', border: '1px solid rgba(210,3,221,0.2)' }}>
+          style={{ background: 'rgba(210,3,221,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}>
           <User className="w-5 h-5" style={{ color: '#D203DD' }} />
         </div>
         <div>
@@ -63,15 +63,15 @@ export default function ProfilePage() {
       </div>
 
       {/* Línea decorativa */}
-      <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, rgba(210,3,221,0.3), rgba(255,45,247,0.2), transparent)' }} />
+      <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15), transparent)' }} />
 
       <div className="grid md:grid-cols-3 gap-6">
 
         {/* Card de perfil */}
         <div className="md:col-span-1 relative rounded-2xl p-6 flex flex-col items-center text-center overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(210,3,221,0.06), rgba(123,0,255,0.04))',
-            border: '1px solid rgba(210,3,221,0.12)',
+            background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)',
+            border: '1px solid rgba(255,255,255,0.1)',
             boxShadow: '0 0 40px rgba(210,3,221,0.05)'
           }}>
           {/* Barra neon superior */}
@@ -84,7 +84,7 @@ export default function ProfilePage() {
           {/* Avatar */}
           <div className="relative mb-4 mt-2">
             <div className="w-20 h-20 rounded-full flex items-center justify-center"
-              style={{ background: '#0A0030', border: '2px solid rgba(210,3,221,0.25)', boxShadow: '0 0 20px rgba(210,3,221,0.1)' }}>
+              style={{ background: '#0A0030', border: '2px solid rgba(255,255,255,0.15)', boxShadow: '0 0 20px rgba(210,3,221,0.1)' }}>
               <UserCircle className="w-14 h-14" style={{ color: 'rgba(255,255,255,0.1)' }} />
             </div>
             <div className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-[#0A0030]"
@@ -95,7 +95,7 @@ export default function ProfilePage() {
           <p className="text-xs font-light tracking-[0.3em] uppercase mb-5" style={{ color: '#D203DD' }}>@{user.username}</p>
 
           <div className="w-full py-2.5 px-4 rounded-xl"
-            style={{ background: 'rgba(13,30,121,0.5)', border: '1px solid rgba(210,3,221,0.2)' }}>
+            style={{ background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)' }}>
             <p className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.25)' }}>Estado de Cuenta</p>
             <p className="text-sm font-black uppercase tracking-widest"
               style={{ color: user.isActive ? '#00FF88' : '#ef4444' }}>
@@ -107,7 +107,7 @@ export default function ProfilePage() {
         {/* Detalles */}
         <div className="md:col-span-2 relative rounded-2xl p-6 overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(255,45,247,0.04), rgba(210,3,221,0.03))',
+            background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)',
             border: '1px solid rgba(255,255,255,0.06)',
           }}>
           <div className="absolute top-0 left-0 right-0 h-px"
@@ -123,9 +123,9 @@ export default function ProfilePage() {
           <div className="grid gap-3">
             {fields.map((field, i) => (
               <div key={i} className="flex items-center gap-4 p-3.5 rounded-xl transition-all duration-300 group"
-                style={{ background: 'rgba(13,30,121,0.4)', border: '1px solid rgba(210,3,221,0.12)' }}
+                style={{ background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = `${field.color}40`)}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(210,3,221,0.12)')}>
+                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}>
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
                   style={{ background: `${field.color}12`, border: `1px solid ${field.color}25` }}>
                   <field.icon className="w-4 h-4" style={{ color: field.color }} />

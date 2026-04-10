@@ -544,7 +544,7 @@ function WizardContent() {
 
                             <button onClick={confirmAdType}
                                 className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-sm transition-all"
-                                style={{ background: 'linear-gradient(135deg,#D203DD,#2563eb)', boxShadow: '0 0 24px rgba(210,3,221,0.25)' }}>
+                                style={{ background: 'linear-gradient(135deg,#D203DD,#2563eb)', boxShadow: '0 0 24px rgba(255,255,255,0.15)' }}>
                                 <Brain size={16} /> Generar estrategias con IA
                             </button>
                             <p className="text-center text-[10px] text-white/20">Las selecciones son opcionales — puedes continuar sin elegir nada y la IA sugerirá lo mejor para tu negocio</p>

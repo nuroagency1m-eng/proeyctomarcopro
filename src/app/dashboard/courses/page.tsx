@@ -92,7 +92,7 @@ export default function CoursesPage() {
           style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
             fontSize: 12, fontWeight: 600, color: '#D203DD',
-            background: 'rgba(210,3,221,0.07)', border: '1px solid rgba(210,3,221,0.2)',
+            background: 'rgba(210,3,221,0.07)', border: '1px solid rgba(255,255,255,0.15)',
             borderRadius: 8, padding: '7px 14px', textDecoration: 'none',
           }}>
           📋 Mis inscripciones
@@ -115,7 +115,7 @@ export default function CoursesPage() {
             background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
             boxSizing: 'border-box',
           }}
-          onFocus={e => (e.currentTarget.style.borderColor = 'rgba(210,3,221,0.35)')}
+          onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)')}
           onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
         />
         {search && (
@@ -129,7 +129,7 @@ export default function CoursesPage() {
       {courses.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-24 text-center">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-            style={{ background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(210,3,221,0.15)' }}>
+            style={{ background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}>
             <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#D203DD" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
             </svg>
@@ -153,8 +153,8 @@ export default function CoursesPage() {
                 style={{
                   borderRadius: 16,
                   overflow: 'hidden',
-                  background: isLocked ? 'rgba(13,30,121,0.3)' : 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)',
-                  border: `1px solid ${isLocked ? 'rgba(210,3,221,0.08)' : 'rgba(210,3,221,0.25)'}`,
+                  background: isLocked ? 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)' : 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)',
+                  border: `1px solid ${isLocked ? 'rgba(210,3,221,0.08)' : 'rgba(255,255,255,0.15)'}`,
                   opacity: isLocked ? 0.7 : 1,
                   cursor: isLocked ? 'default' : 'pointer',
                   transition: 'border-color 0.2s, transform 0.15s',

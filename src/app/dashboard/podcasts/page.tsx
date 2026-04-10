@@ -78,7 +78,7 @@ export default function PodcastsPage() {
             background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
             boxSizing: 'border-box',
           }}
-          onFocus={e => (e.currentTarget.style.borderColor = 'rgba(210,3,221,0.35)')}
+          onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)')}
           onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
         />
         {search && (
@@ -90,7 +90,7 @@ export default function PodcastsPage() {
       {podcasts.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-24 text-center">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-            style={{ background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(210,3,221,0.15)' }}>
+            style={{ background: 'rgba(210,3,221,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}>
             <i className="fa-solid fa-microphone" style={{ fontSize: 24, color: '#D203DD', opacity: 0.5 }} />
           </div>
           <p className="text-sm text-white/40">No hay episodios disponibles aún.</p>
@@ -107,8 +107,8 @@ export default function PodcastsPage() {
               className="hover:scale-[1.01] transition-transform">
               <div style={{
                 borderRadius: 16, overflow: 'hidden',
-                background: 'linear-gradient(145deg, #0D1E79 0%, #1e0068 100%)',
-                border: '1px solid rgba(210,3,221,0.25)',
+                background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)',
+                border: '1px solid rgba(255,255,255,0.15)',
                 cursor: 'pointer', display: 'flex', flexDirection: 'column', height: '100%',
               }}>
                 {/* Cover */}

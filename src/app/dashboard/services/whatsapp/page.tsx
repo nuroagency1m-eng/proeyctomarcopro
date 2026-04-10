@@ -332,7 +332,7 @@ function GlobalBotChart({ bots }: { bots: Bot[] }) {
   const yVals = [0, Math.round(maxVal / 2), maxVal]
 
   return (
-    <div className="glass-panel rounded-2xl" style={{ padding: '20px 20px 16px', background: 'rgba(13,30,121,0.4)', border: '1px solid rgba(210,3,221,0.2)' }}>
+    <div className="glass-panel rounded-2xl" style={{ padding: '20px 20px 16px', background: 'linear-gradient(135deg, rgba(154,203,255,0.12) 0%, rgba(255,125,224,0.12) 50%, rgba(162,102,255,0.12) 100%)', border: '1px solid rgba(255,255,255,0.15)' }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
         <div>

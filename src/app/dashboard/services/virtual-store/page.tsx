@@ -80,7 +80,7 @@ function ShareStoreModal({ store, onClose }: { store: StoreRecord; onClose: () =
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="bg-[#0D1E79]/60 border border-purple-500/25 rounded-3xl w-full max-w-sm p-6">
+            <div className="bg-white/5 border border-white/15 rounded-3xl w-full max-w-sm p-6">
                 <div className="flex items-center justify-between mb-5">
                     <div>
                         <h2 className="text-lg font-bold">Compartir tienda</h2>
@@ -438,7 +438,7 @@ export default function VirtualStorePage() {
                 {/* Product Modal */}
                 {showProductModal && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-                        <div className="bg-[#0D1E79]/60 border border-purple-500/25 rounded-3xl w-full max-w-lg p-5 sm:p-8 max-h-[90vh] overflow-y-auto custom-scrollbar">
+                        <div className="bg-white/5 border border-white/15 rounded-3xl w-full max-w-lg p-5 sm:p-8 max-h-[90vh] overflow-y-auto custom-scrollbar">
                             <h2 className="text-xl sm:text-2xl font-bold mb-5">{editProduct ? 'Editar Producto' : 'Nuevo Producto'}</h2>
                             <form onSubmit={handleSaveProduct} className="space-y-6">
                                 <div>
@@ -658,7 +658,7 @@ export default function VirtualStorePage() {
             ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {stores.map(store => (
-                        <div key={store.id} className="group relative bg-[#0D1E79]/60 border border-purple-500/25 rounded-3xl p-6 transition-all hover:border-purple-500/40 overflow-hidden">
+                        <div key={store.id} className="group relative bg-white/5 border border-white/15 rounded-3xl p-6 transition-all hover:border-white/25 overflow-hidden">
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-neon-blue/5 blur-[100px] pointer-events-none" />
 
                             <div className="flex items-start justify-between mb-6">
@@ -762,7 +762,7 @@ export default function VirtualStorePage() {
 
             {showStoreModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-                    <div className="bg-[#0D1E79]/60 border border-purple-500/25 rounded-3xl w-full max-w-md p-5 sm:p-6 max-h-[90vh] overflow-y-auto custom-scrollbar">
+                    <div className="bg-white/5 border border-white/15 rounded-3xl w-full max-w-md p-5 sm:p-6 max-h-[90vh] overflow-y-auto custom-scrollbar">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-xl font-bold">{editStore ? 'Configurar Tienda' : 'Crear Tienda'}</h2>
                             <button onClick={() => setShowStoreModal(false)}><X size={24} className="text-dark-400" /></button>
