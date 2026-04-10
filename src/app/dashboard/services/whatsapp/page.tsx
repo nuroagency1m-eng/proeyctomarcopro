@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { UploadField } from '@/components/UploadField'
+import AIKeySelector from '@/components/AIKeySelector'
 import {
   ArrowLeft,
   Plus,
@@ -3229,7 +3230,7 @@ export default function WhatsAppPage() {
         >
           <ArrowLeft className="w-5 h-5 text-dark-400 group-hover:text-white transition-colors" />
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-1">
           <div className="w-12 h-12 rounded-xl bg-neon-green/10 flex items-center justify-center border border-neon-green/20 shadow-[0_0_15px_rgba(0,255,157,0.15)]">
             <MessageCircle className="w-6 h-6 text-neon-green" />
           </div>
@@ -3243,6 +3244,7 @@ export default function WhatsAppPage() {
             <p className="text-sm text-dark-300">Configura y gestiona tus agentes AI de ventas.</p>
           </div>
         </div>
+        <AIKeySelector compact />
       </div>
 
       {selectedBot ? (

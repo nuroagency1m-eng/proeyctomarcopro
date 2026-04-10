@@ -12,6 +12,7 @@ import {
 import Link from 'next/link'
 import { useRouter, useParams, useSearchParams } from 'next/navigation'
 import LocationSelector from '@/components/ads/LocationSelector'
+import AIKeySelector from '@/components/AIKeySelector'
 
 function CampaignPageInner() {
     const router = useRouter()
@@ -607,6 +608,7 @@ function CampaignPageInner() {
                     <h1 className="text-lg font-black uppercase tracking-tighter truncate">{strategy.name}</h1>
                     <p className="text-[11px] text-white/30 truncate">{brief?.name || 'Business Brief requerido'}</p>
                 </div>
+                <AIKeySelector compact />
                 {/* Step pills */}
                 <div className="hidden sm:flex items-center gap-1.5 shrink-0">
                     {[

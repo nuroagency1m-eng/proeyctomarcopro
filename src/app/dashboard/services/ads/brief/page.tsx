@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import AIKeySelector from '@/components/AIKeySelector'
 
 interface BriefForm {
     name: string; industry: string; description: string; valueProposition: string
@@ -97,6 +98,7 @@ export default function BriefPage() {
                     <h1 className="text-xl font-black uppercase tracking-tighter">Mis Negocios</h1>
                     <p className="text-xs text-white/30">Perfiles de negocio para tus campañas</p>
                 </div>
+                <AIKeySelector compact />
                 <button
                     onClick={() => setView('create')}
                     className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl transition-all"

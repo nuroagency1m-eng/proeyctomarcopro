@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import AIKeySelector from '@/components/AIKeySelector'
 import {
     ArrowLeft, ArrowRight, Sparkles, Loader2,
     Plus, Trash2, Eye, EyeOff, KeyRound,
@@ -715,6 +716,7 @@ export default function CreateLandingPage() {
                         <h1 className="text-sm font-black uppercase tracking-tight">Nueva Landing Page</h1>
                         <p className="text-[10px] text-[#00FF88] font-bold uppercase tracking-widest hidden sm:block">Paso {step} de {STEPS.length} — {STEPS[step - 1].label}</p>
                     </div>
+                    <AIKeySelector compact />
                 </div>
                 {/* Step dots — mobile */}
                 <div className="flex items-center gap-1.5 sm:hidden">

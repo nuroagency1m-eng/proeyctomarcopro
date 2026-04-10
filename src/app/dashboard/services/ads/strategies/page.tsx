@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { ArrowLeft, Loader2, Filter, Image as ImageIcon, Video, Sparkles, ArrowRight, CheckCircle2, FileText, Edit2 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import AIKeySelector from '@/components/AIKeySelector'
 
 const PLATFORM_FILTERS = [
     { id: 'ALL', label: 'Todas las plataformas' },
@@ -99,10 +100,11 @@ export default function StrategiesPage() {
                 <Link href="/dashboard/services/ads" className="w-9 h-9 rounded-xl bg-white/5 border border-purple-500/25 flex items-center justify-center hover:bg-white/10 transition-all">
                     <ArrowLeft size={16} />
                 </Link>
-                <div>
+                <div className="flex-1">
                     <h1 className="text-xl font-black uppercase tracking-tighter">Estrategias de Pauta</h1>
                     <p className="text-xs text-white/30">Estrategias generadas por IA según tu negocio</p>
                 </div>
+                <AIKeySelector compact />
             </div>
 
             {/* Brief status bar */}

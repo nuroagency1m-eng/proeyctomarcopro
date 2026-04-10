@@ -10,6 +10,7 @@ import {
     Smartphone, Heart, BookMarked, Clock, Image as ImageIcon, Video
 } from 'lucide-react'
 import Link from 'next/link'
+import AIKeySelector from '@/components/AIKeySelector'
 
 interface Brief { id: string; name: string; industry: string; description: string }
 interface Strategy {
@@ -293,6 +294,7 @@ function WizardContent() {
                     <h1 className="text-xl font-black uppercase tracking-tighter">Nueva Campaña</h1>
                     <p className="text-xs text-white/30">2 pasos para lanzar tu anuncio</p>
                 </div>
+                <AIKeySelector compact />
             </div>
 
             {/* Step indicators */}
