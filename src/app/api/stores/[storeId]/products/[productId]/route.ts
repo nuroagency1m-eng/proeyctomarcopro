@@ -32,21 +32,34 @@ export async function PATCH(
             return NextResponse.json({ error: 'Tienda no encontrada' }, { status: 404 })
         }
 
-        const updated = await prisma.storeProduct.update({
-            where: { id: productId },
-            data: {
-                name: body.name,
-                description: body.description,
-                category: body.category,
-                price: body.price !== undefined ? Number(body.price) : undefined,
-                pricePromo: body.pricePromo !== undefined ? (body.pricePromo !== '' && body.pricePromo !== null ? Number(body.pricePromo) : null) : undefined,
-                currency: body.currency,
-                points: body.points !== undefined ? Number(body.points) : undefined,
-                stock: body.stock !== undefined ? Number(body.stock) : undefined,
-                images: body.images,
-                active: body.active,
+        const updateData: any = {
+            name: body.name,
+            description: body.description,
+            category: body.category,
+            price: body.price !== undefined ? Number(body.price) : undefined,
+            currency: body.currency,
+            points: body.points !== undefined ? Number(body.points) : undefined,
+            stock: body.stock !== undefined ? Number(body.stock) : undefined,
+            images: body.images,
+            active: body.active,
+        }
+
+        if (body.pricePromo !== undefined) {
+            updateData.pricePromo = (body.pricePromo !== '' && body.pricePromo !== null) ? Number(body.pricePromo) : null
+        }
+
+        let updated
+        try {
+            updated = await prisma.storeProduct.update({ where: { id: productId }, data: updateData })
+        } catch (err: any) {
+            // If price_promo column doesn't exist yet (migration pending), retry without it
+            if (updateData.pricePromo !== undefined && (err?.message?.includes('price_promo') || err?.code === 'P2022')) {
+                delete updateData.pricePromo
+                updated = await prisma.storeProduct.update({ where: { id: productId }, data: updateData })
+            } else {
+                throw err
             }
-        })
+        }
 
         return NextResponse.json({ product: updated })
     } catch (err) {

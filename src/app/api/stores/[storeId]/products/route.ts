@@ -69,21 +69,35 @@ export async function POST(
             return NextResponse.json({ error: 'Tienda no encontrada' }, { status: 404 })
         }
 
-        const product = await prisma.storeProduct.create({
-            data: {
-                storeId,
-                name,
-                description: description || '',
-                category: category || 'General',
-                price: Number(price),
-                pricePromo: pricePromo !== undefined && pricePromo !== '' ? Number(pricePromo) : null,
-                currency: currency || 'USD',
-                points: points !== undefined ? Number(points) : 0,
-                stock: Number(stock) || 0,
-                images: images || [],
-                active: active !== undefined ? active : true,
+        const productData: any = {
+            storeId,
+            name,
+            description: description || '',
+            category: category || 'General',
+            price: Number(price),
+            currency: currency || 'USD',
+            points: points !== undefined ? Number(points) : 0,
+            stock: Number(stock) || 0,
+            images: images || [],
+            active: active !== undefined ? active : true,
+        }
+
+        if (pricePromo !== undefined && pricePromo !== '' && pricePromo !== null) {
+            productData.pricePromo = Number(pricePromo)
+        }
+
+        let product
+        try {
+            product = await prisma.storeProduct.create({ data: productData })
+        } catch (err: any) {
+            // If price_promo column doesn't exist yet (migration pending), retry without it
+            if (productData.pricePromo !== undefined && (err?.message?.includes('price_promo') || err?.code === 'P2022')) {
+                delete productData.pricePromo
+                product = await prisma.storeProduct.create({ data: productData })
+            } else {
+                throw err
             }
-        })
+        }
 
         return NextResponse.json({ product }, { status: 201 })
     } catch (err) {
