@@ -76,7 +76,7 @@ const services = [
 
 function SkeletonCard() {
   return (
-    <div className="rounded-3xl p-6 animate-pulse" style={{ background: 'linear-gradient(145deg, #0D1E79 0%, #12004A 100%)', border: '1px solid rgba(210,3,221,0.12)' }}>
+    <div className="rounded-3xl p-6 animate-pulse" style={{ background: '#2B2644', border: '1px solid rgba(255,255,255,0.05)' }}>
       <div className="flex items-start justify-between mb-6">
         <div className="w-14 h-14 rounded-2xl bg-white/5" />
         <div className="w-16 h-6 rounded-full bg-white/5" />
@@ -182,8 +182,8 @@ export default function ServicesPage() {
                 <div key={service.id}
                   className={`relative rounded-3xl overflow-hidden transition-all duration-500 group ${unlocked ? 'hover:-translate-y-2' : 'opacity-60'}`}
                   style={{
-                    background: 'linear-gradient(145deg, #0D1E79 0%, #12004A 100%)',
-                    border: `1px solid ${unlocked ? service.from + '35' : 'rgba(210,3,221,0.12)'}`,
+                    background: unlocked ? `linear-gradient(135deg, ${service.from}, ${service.to})` : '#2B2644',
+                    border: `1px solid ${unlocked ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)'}`,
                     boxShadow: unlocked ? `0 8px 32px rgba(0,0,0,0.35), 0 0 0 0 ${service.from}00` : 'none',
                   }}
                   onMouseEnter={e => {
@@ -252,13 +252,13 @@ export default function ServicesPage() {
 
                     {/* Title */}
                     <h3 className="text-base font-black mb-2 leading-tight"
-                      style={{ color: unlocked ? '#fff' : 'rgba(255,255,255,0.4)' }}>
+                      style={{ color: '#fff' }}>
                       {service.title}
                     </h3>
 
                     {/* Description */}
                     <p className="text-xs leading-relaxed mb-5 flex-1"
-                      style={{ color: unlocked ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)' }}>
+                      style={{ color: unlocked ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.2)' }}>
                       {service.description}
                     </p>
 
@@ -267,9 +267,9 @@ export default function ServicesPage() {
                       {service.features.map((f, i) => (
                         <span key={i} className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
                           style={{
-                            background: unlocked ? `${service.from}10` : 'rgba(255,255,255,0.03)',
-                            border: `1px solid ${unlocked ? service.from + '22' : 'rgba(255,255,255,0.06)'}`,
-                            color: unlocked ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.18)',
+                            background: unlocked ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.03)',
+                            border: `1px solid ${unlocked ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.06)'}`,
+                            color: unlocked ? '#fff' : 'rgba(255,255,255,0.18)',
                           }}>
                           {f}
                         </span>
@@ -281,8 +281,9 @@ export default function ServicesPage() {
                       <Link href={service.link}
                         className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl font-black text-sm text-white transition-all duration-300 group-hover:gap-3"
                         style={{
-                          background: `linear-gradient(135deg, ${service.from}, ${service.to})`,
-                          boxShadow: `0 4px 24px ${service.from}35`,
+                          background: 'rgba(255,255,255,0.2)',
+                          border: '1px solid rgba(255,255,255,0.3)',
+                          boxShadow: `0 4px 24px rgba(0,0,0,0.15)`,
                         }}>
                         Abrir Servicio
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
