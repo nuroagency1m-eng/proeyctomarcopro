@@ -1477,10 +1477,9 @@ function CampaignPageInner() {
 
             {/* ── Floating publish bar ── */}
             {campaign && (
-                <div className="fixed bottom-[65px] left-0 right-0 z-50 px-4 pb-3 pt-4 lg:bottom-0 lg:left-[240px]"
-                    style={{ background: 'linear-gradient(to top,rgba(6,6,16,1) 60%,transparent)' }}>
-                    <div className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto flex items-center gap-3 px-4 py-3 rounded-2xl"
-                        style={{ background: 'rgba(8,8,20,0.92)', border: '1px solid rgba(139,92,246,0.15)', backdropFilter: 'blur(20px)', boxShadow: '0 -4px 30px rgba(0,0,0,0.5),0 0 20px rgba(139,92,246,0.06)' }}>
+                <div className="fixed bottom-[65px] left-0 right-0 z-[110] px-4 pb-3 pt-3 lg:bottom-0 lg:left-[240px]"
+                    style={{ background: 'rgba(13,11,26,0.97)', borderTop: '1px solid rgba(139,92,246,0.15)', backdropFilter: 'blur(20px)' }}>
+                    <div className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto flex items-center gap-3">
                         <div className="flex-1 min-w-0 hidden sm:block">
                             <p className="text-xs font-bold text-white/60 truncate">{form.name}</p>
                             <p className="text-[11px] text-white/25">
